@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 
 /**
  * Classe de la couche Domaine Permet de stocker et manipuler l'ensemble des
- * éléments métieurs correspondant à un client de ProxiBanque
+ * elements metiers correspondant a un client de ProxiBanque
  * 
  * @author Sylvain CHAUVET
  */
@@ -128,7 +128,7 @@ public class Client extends Personne {
 	}
 	
 	/**
-	 * Constructeur par défault  
+	 * Constructeur par dï¿½fault  
 	 */
 	public Client() {
 		super();
@@ -141,33 +141,43 @@ public class Client extends Personne {
 	public void setIdClient(int idClient) {
 		this.idClient = idClient;
 	}
+	
 	public String getAdresse() {
 		return adresse;
 	}
+	
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
+	
 	public String getEmail() {
 		return email;
 	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public CompteCourant getCourant() {
 		return courant;
 	}
+	
 	public void setCourant(CompteCourant courant) {
 		this.courant = courant;
 	}
+	
 	public CompteEpargne getEpargne() {
 		return epargne;
 	}
+	
 	public void setEpargne(CompteEpargne epargne) {
 		this.epargne = epargne;
 	}
+	
 	public Conseiller getConseiller() {
 		return conseiller;
 	}
+	
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
