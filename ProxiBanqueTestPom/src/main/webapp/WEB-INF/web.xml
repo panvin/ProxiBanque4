@@ -1,86 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="WebApp_ID" version="2.4">
-  <display-name>ProxiBanqueV4</display-name>
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <servlet-name>proxibanque</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>proxibanque</servlet-name>
-    <url-pattern>*.xhtml</url-pattern>
-  </servlet-mapping>
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-  <context-param>
-    <param-name>primefaces.THEME</param-name>
-    <param-value>bootstrap</param-value>
-  </context-param>
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+		http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	id="WebApp_ID" version="2.4">
+
+	<display-name>ProxiBanqueV4</display-name>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>proxibanque</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>proxibanque</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>bootstrap</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
 			/WEB-INF/classes/data.xml
 			/WEB-INF/classes/service.xml 
 			/WEB-INF/classes/servlet.xml
 		</param-value>
-  </context-param>
-  <resource-ref>
-    <description>DB Connection</description>
-    <res-ref-name>jdbc/proxibanquev4</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
-  <security-constraint>
-    <display-name>Authentification</display-name>
-    <web-resource-collection>
-      <web-resource-name>Page sécurisée</web-resource-name>
-      <url-pattern>*.xhtml</url-pattern>
-    </web-resource-collection>
-    <auth-constraint>
-      <role-name>conseiller</role-name>
-      <role-name>gerant</role-name>
-    </auth-constraint>
-  </security-constraint>
-  <login-config>
-    <auth-method>FORM</auth-method>
-    <realm-name>Form authentification</realm-name>
-    <form-login-config>
-      <form-login-page>/login.xhtml</form-login-page>
-      <form-error-page>/loginerror.xhtml</form-error-page>
-    </form-login-config>
-  </login-config>
-  <security-role>
-    <description>Conseiller</description>
-    <role-name>conseiller</role-name>
-  </security-role>
-  <security-role>
-    <description>Gérant</description>
-    <role-name>gerant</role-name>
-  </security-role>
-  <servlet>
-    <servlet-name>Faces Servlet</servlet-name>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>/faces/*</url-pattern>
-  </servlet-mapping>
-  <context-param>
-    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-    <param-value>resources.application</param-value>
-  </context-param>
-  <context-param>
-    <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
-    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-    <param-value>client</param-value>
-  </context-param>
-  <context-param>
-    <description>
+	</context-param>
+
+	<!-- Database configuration -->
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/proxibanquev4</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<!-- JAAS configuration -->
+	<security-constraint>
+		<display-name>Authentification</display-name>
+		<web-resource-collection>
+			<web-resource-name>Page sécurisée</web-resource-name>
+			<url-pattern>*.xhtml</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>conseiller</role-name>
+			<role-name>gerant</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>Form authentification</realm-name>
+		<form-login-config>
+			<form-login-page>/login.xhtml</form-login-page>
+			<form-error-page>/loginerror.xhtml</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<description>Conseiller</description>
+		<role-name>conseiller</role-name>
+	</security-role>
+	<security-role>
+		<description>Gérant</description>
+		<role-name>gerant</role-name>
+	</security-role>
+
+	<!-- Just here so the JSF implementation can initialize, *not* used at runtime -->
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Use JSF view templates saved as *.xhtml, for use with Facelets -->
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>resources.application</param-value>
+	</context-param>
+	<context-param>
+		<description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+	</context-param>
+	<!-- <context-param>
+		<description>
 	This parameter tells MyFaces if javascript code should be allowed in
 	the rendered HTML output.
 	If javascript is allowed, command_link anchors will have javascript code
@@ -88,34 +111,34 @@
 	If javascript is not allowed, the state saving info and nested parameters
 	will be added as url parameters.
 	Default is 'true'</description>
-    <param-name>org.apache.myfaces.ALLOW_JAVASCRIPT</param-name>
-    <param-value>true</param-value>
-  </context-param>
-  <context-param>
-    <description>
+		<param-name>org.apache.myfaces.ALLOW_JAVASCRIPT</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<description>
 	If true, rendered HTML code will be formatted, so that it is 'human-readable'
 	i.e. additional line separators and whitespace will be written, that do not
 	influence the HTML code.
 	Default is 'true'</description>
-    <param-name>org.apache.myfaces.PRETTY_HTML</param-name>
-    <param-value>true</param-value>
-  </context-param>
-  <context-param>
-    <param-name>org.apache.myfaces.DETECT_JAVASCRIPT</param-name>
-    <param-value>false</param-value>
-  </context-param>
-  <context-param>
-    <description>
+		<param-name>org.apache.myfaces.PRETTY_HTML</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.apache.myfaces.DETECT_JAVASCRIPT</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<description>
 	If true, a javascript function will be rendered that is able to restore the
 	former vertical scroll on every request. Convenient feature if you have pages
 	with long lists and you do not want the browser page to always jump to the top
 	if you trigger a link or button action that stays on the same page.
 	Default is 'false'
 </description>
-    <param-name>org.apache.myfaces.AUTO_SCROLL</param-name>
-    <param-value>true</param-value>
-  </context-param>
-  <listener>
-    <listener-class>org.apache.myfaces.webapp.StartupServletContextListener</listener-class>
-  </listener>
+		<param-name>org.apache.myfaces.AUTO_SCROLL</param-name>
+		<param-value>true</param-value>
+	</context-param> -->
+<!-- 	<listener>
+		<listener-class>org.apache.myfaces.webapp.StartupServletContextListener</listener-class>
+	</listener> -->
 </web-app>

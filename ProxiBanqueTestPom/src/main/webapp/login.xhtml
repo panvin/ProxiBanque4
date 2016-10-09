@@ -20,6 +20,13 @@
 		</ui:include>
 		</ui:insert>
 	</div>
+	
+ 		<div id="menu">
+	<ui:insert name="menu">
+		<ui:include src="/template/menu.xhtml">
+		</ui:include>
+		</ui:insert>
+	</div>
 
 	<center>
 		<p:panel header="Connexion" style="width: 250;">
@@ -35,6 +42,14 @@
 			</form>
 		</p:panel>
 	</center>
+
+	<div id="footer">
+	<ui:insert name="footer">
+		<ui:include src="/template/footer.xhtml">
+		</ui:include>
+		</ui:insert>
+	</div>
+
 </h:body>
 </html>
 

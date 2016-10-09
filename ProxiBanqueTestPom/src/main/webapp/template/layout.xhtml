@@ -9,38 +9,34 @@
 		<!-- permet de déclarer une ressource qui se trouve dans le fichier css du dossier parent resources -->
 		<h:outputStylesheet library="css" name="common-style.css" target="body"/>
 		<h:outputScript library="javascript" name="util.js" target="head"/>
-		<link type="text/css" rel="stylesheet" href="themes/sam/skin.css" />
 	</h:head>  
     <h:body>
 		<div id="page">
-		<!-- La div avec le id= header, Represente le header  -->
+		<!-- La div avec le id= header, représente le header  -->
 			<div id="header">
 				<ui:insert name="header" >
-					<ui:include src="/template/header.xhtml">
-					</ui:include>
+					<ui:include src="/template/header.xhtml" />
 				</ui:insert>
 			</div>
 			
-			<!-- La div avec le id= leftnav, Represente la navbar de gauche  --> 
-			<div id="leftnav">
-				<ui:insert name="leftnav" >
-					<ui:include src="/template/leftnav.xhtml" />
+			<!-- La div avec le id= menu, représente le menu  --> 
+			<div id="menu">
+				<ui:insert name="menu" >
+					<ui:include src="/template/menu.xhtml" />
 				</ui:insert>
 			</div>
 		   
-		   <!-- La div avec le id= content, Represente le contenu spécifique à chaque vue  --> 
+		   <!-- La div avec le id= content, représente le contenu par défaut  --> 
 			<div id="content">
 				<ui:insert name="content" >
 					<ui:include src="/template/content.xhtml" />
 				</ui:insert>
 			</div>
 			
-			<!-- La div avec le id= footer, Represente le contenu spécifique au pied de page par défaut  -->     
+			<!-- La div avec le id= footer, représente le pied de page par défaut  -->     
 			<div id="footer">
 				<ui:insert name="footer" >
-					<ui:include src="/template/footer.xhtml">
-					   <ui:param name="auteur" value="www.objis.com" />
-					</ui:include>
+					<ui:include src="/template/footer.xhtml" />
 				</ui:insert>
 			</div>
 		</div>
