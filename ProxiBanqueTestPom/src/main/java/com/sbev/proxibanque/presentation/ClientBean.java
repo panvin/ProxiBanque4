@@ -76,5 +76,6 @@ public class ClientBean {
 		conseillerinsession.setClientList(clientService.lireClientParConseiller(conseillerinsession.getConseiller()));
 		return "clients";
 	}
+	
 
 }

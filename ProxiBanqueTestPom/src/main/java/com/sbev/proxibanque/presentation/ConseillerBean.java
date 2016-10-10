@@ -44,9 +44,10 @@ public class ConseillerBean implements Serializable
     private String password;
 //    private String searchUser;
     private List<Client> clientList;
+    
     private Conseiller conseiller;
     private Client client;
-    private int id; 
+
     
     
     public ConseillerBean() {
@@ -182,4 +183,13 @@ public class ConseillerBean implements Serializable
 		conseillerservice.sauverConseiller(conseiller);
 		return "clients";
 	}
+	public String lireToutClient(Client client) {		
+		clientservice.lireToutClient();		
+		return "clients";
+	}
+	
+	 public List<Client> clientList1(){
+	    	return clientservice.lireToutClient();
+	    }
+
 }
