@@ -42,6 +42,7 @@ public class ConseillerBean implements Serializable
     private List<Client> clientList;
     private Conseiller conseiller;
     private Client client;
+    private int id; 
     
     
     public ConseillerBean() {
@@ -149,8 +150,8 @@ public class ConseillerBean implements Serializable
 //    }
     
 //    public List<Client> clientList1(){
-//    	return clientservice.getTargetedClients(conseillerservice.read(login));
-//    }
+//    	return clientservice.lireToutClient(conseillerservice.lireConseiller(id));
+//   }
     
     public void rowSelect(SelectEvent event){
     	client =  (Client)event.getObject();

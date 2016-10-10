@@ -59,7 +59,7 @@ public class ClientBean {
 		ConseillerBean conseillerinsession = (ConseillerBean) FacesContext.getCurrentInstance().getExternalContext()
 				.getSessionMap().get("conseillerbean");
 		clientService.sauverClient(client);
-		conseillerinsession.setClientList(clientService.getTargetedClients(conseillerinsession.getConseiller()));
+		conseillerinsession.setClientList(clientService.lireClientParConseiller(conseillerinsession.getConseiller()));
 		return "clients";
 	}
 
@@ -67,7 +67,7 @@ public class ClientBean {
 		ConseillerBean conseillerinsession = (ConseillerBean) FacesContext.getCurrentInstance().getExternalContext()
 				.getSessionMap().get("conseillerbean");
 		clientService.supprimerClient(client);
-		conseillerinsession.setClientList(clientService.getTargetedClients(conseillerinsession.getConseiller()));
+		conseillerinsession.setClientList(clientService.lireClientParConseiller(conseillerinsession.getConseiller()));
 		return "clients";
 	}
 
