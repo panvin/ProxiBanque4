@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -24,11 +23,9 @@ public class Client extends Personne {
 	private int idClient;
 	private String adresse;
 	private String email;
-	@OneToOne
-	@JoinColumn(name="idClient")
+	@OneToOne(orphanRemoval = true)
 	private CompteCourant courant;
-	@OneToOne
-	@JoinColumn(name="idClient")
+	@OneToOne(orphanRemoval = true)
 	private CompteEpargne epargne;
 	@ManyToOne(targetEntity=Conseiller.class)
 	private Conseiller conseiller;

@@ -1,5 +1,7 @@
 package com.sbev.proxibanque.domaine;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -14,7 +16,9 @@ import javax.persistence.Id;
  * @author Sylvain CHAUVET
  */
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="TYPE_COMPTE")
+@DiscriminatorValue("COMPTE")
 public abstract class Compte {
 
 	@Id
@@ -22,6 +26,7 @@ public abstract class Compte {
 	private int idCompte;
 	private String type;
 	private double solde;
+
 	
 	
 	/**
@@ -72,5 +77,7 @@ public abstract class Compte {
 	}
 	public void setSolde(double solde) {
 		this.solde = solde;
-	}	
+	}
+
+	
 }

@@ -1,7 +1,12 @@
 package com.sbev.proxibanque.domaine;
 
+import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 
 /**
  * Méthode de la couche Domaine
@@ -10,8 +15,14 @@ import javax.persistence.PrimaryKeyJoinColumn;
  * @author Sylvain CHAUVET
  */
 @Entity
-@PrimaryKeyJoinColumn(name="COMPTE_ID")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="TYPE_COMPTE")
+@DiscriminatorValue("COURANT")
 public class CompteCourant extends Compte {
+
+	@OneToOne(cascade=CascadeType.MERGE)
+	private Client client;
+	
 
 	/**
 	 * Constructeur de la classe
@@ -39,4 +50,12 @@ public class CompteCourant extends Compte {
 		super();
 	}
 
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	
 }
