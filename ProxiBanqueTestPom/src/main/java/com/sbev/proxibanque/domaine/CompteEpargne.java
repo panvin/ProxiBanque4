@@ -20,8 +20,8 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("EPARGNE")
 public class CompteEpargne extends Compte {
 
-	@OneToOne(cascade=CascadeType.MERGE)
-	private Client client;
+//	@OneToOne(cascade=CascadeType.MERGE)
+//	private Client client;
 	
 	/**
 	 * Constructeur de la classe
@@ -48,12 +48,12 @@ public class CompteEpargne extends Compte {
 	public CompteEpargne() {
 		super();
 	}
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
+//	public Client getClient() {
+//		return client;
+//	}
+//
+//	public void setClient(Client client) {
+//		this.client = client;
+//	}
 	
 }

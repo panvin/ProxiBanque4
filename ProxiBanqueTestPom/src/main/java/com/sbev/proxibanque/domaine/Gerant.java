@@ -2,6 +2,7 @@ package com.sbev.proxibanque.domaine;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -14,6 +15,8 @@ import javax.persistence.InheritanceType;
  *
  */
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="ROLE")
 @DiscriminatorValue("GERANT")
 public class Gerant extends Conseiller {
 

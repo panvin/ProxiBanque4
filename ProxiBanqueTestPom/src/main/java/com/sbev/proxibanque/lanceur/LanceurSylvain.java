@@ -1,11 +1,15 @@
 package com.sbev.proxibanque.lanceur;
 
+import java.util.List;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.sbev.proxibanque.domaine.Client;
+import com.sbev.proxibanque.domaine.CompteCourant;
 import com.sbev.proxibanque.domaine.CompteEpargne;
 import com.sbev.proxibanque.domaine.Conseiller;
 import com.sbev.proxibanque.domaine.Gerant;
+import com.sbev.proxibanque.domaine.Virement;
 import com.sbev.proxibanque.service.ClientService;
 import com.sbev.proxibanque.service.CompteService;
 import com.sbev.proxibanque.service.ConseillerService;
@@ -30,32 +34,37 @@ public class LanceurSylvain {
 	CompteService compteService = (CompteService) appContext.getBean("compteService");
 	GerantService gerantService = (GerantService) appContext.getBean("gerantService");
 
-	
-	CompteEpargne compteE = new CompteEpargne(1, "jij", 2158.4);
-
-	Client client1 = new Client ("Francis", "Dylan", "2 rue des champignons", "bdylan@gmail.com", null);
-
-	
-	compteService.sauverCompte(compteE);
-	client1.setEpargne(compteE);
-	
-	Conseiller bolos = new Conseiller("bob", "toto", "bolosstyle", "1234");
-	Gerant bolosMaster = new Gerant("aaaa", "jedeviensfou", "springcdelamerde", "fucklintegration");
-	
-	Client client2 = new Client ("Jeveux", "uncompte", "3 rue du fric", "banzai@gmail.com", compteE, bolos);
-	
-	//dao.saveAndFlush(client1);
-	//gDao.saveAndFlush(bolosMaster);
-	//cDao.saveAndFlush(bolos);
-	
+	Conseiller conseiller1 = new Conseiller("Abra", "Kadabra", "abra", "kadabra");
+	conseillerService.sauverConseiller(conseiller1);
+	CompteEpargne compte1 = new CompteEpargne("jij", 2158.4);
+	compteService.sauverCompte(compte1);
+	Client client1 = new Client ("Bob", "Dylan", "2 rue des champignons", "dylan@gmail.com", compte1, conseiller1);
 	clientService.sauverClient(client1);
-	Client client3 = clientService.lireClient(1);
-	System.out.println(client3.getPrenom());
-	conseillerService.sauverConseiller(bolos);
-	gerantService.sauverGerant(bolosMaster);
 	
+	
+	Gerant gerant1 = new Gerant("Magic", "Gerant", "magic", "gerant");
+	conseillerService.sauverConseiller(gerant1);
+	CompteCourant compte2 = new CompteCourant("jij", 29.4);
+	compteService.sauverCompte(compte2);
+	Client client2 = new Client ("Mike", "Tyson", "3 rue du Redemarrage Eclipse", "banzai@gmail.com", compte2, gerant1);
 	clientService.sauverClient(client2);
+
+	Conseiller conseiller = conseillerService.lireConseiller(1);
+	CompteCourant compte3 = new CompteCourant("jij", 3529.4);
+	compteService.sauverCompte(compte3);
+	Client client3 = new Client ("Francis", "Lalane", "12 avenue du boucan", "flalane@gmail.com", compte3, conseiller);
+	clientService.sauverClient(client3);
+	
+	compteService.virement(1, 2, 227);
+	
+	List<Client> listeClient = clientService.lireToutClient();
+	for (Client client : listeClient) {
+		System.out.println(client.getPrenom() + " " + client.getNom());
+	}
+
+
 	
 
+	
 	}
 }

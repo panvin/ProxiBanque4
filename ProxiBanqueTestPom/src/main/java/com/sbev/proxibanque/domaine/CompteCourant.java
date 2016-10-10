@@ -20,8 +20,8 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("COURANT")
 public class CompteCourant extends Compte {
 
-	@OneToOne(cascade=CascadeType.MERGE)
-	private Client client;
+//	@OneToOne(cascade=CascadeType.MERGE)
+//	private Client client;
 	
 
 	/**
@@ -50,12 +50,12 @@ public class CompteCourant extends Compte {
 		super();
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
+//	public Client getClient() {
+//		return client;
+//	}
+//
+//	public void setClient(Client client) {
+//		this.client = client;
+//	}
 	
 }

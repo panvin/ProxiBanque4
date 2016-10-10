@@ -17,8 +17,8 @@ import javax.persistence.MappedSuperclass;
  */
 @MappedSuperclass
 //@Entity
-@DiscriminatorValue("PERSONNE")
-@Inheritance(strategy=InheritanceType.JOINED)
+//@DiscriminatorValue("PERSONNE")
+//@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Personne {
 	
 	private String prenom;
