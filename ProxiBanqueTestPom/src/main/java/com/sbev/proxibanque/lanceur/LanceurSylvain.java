@@ -24,7 +24,7 @@ public class LanceurSylvain {
 	
 	// 2. Récupération des beans
 	//ClientService clientService = (ClientService) appContext.getBean("clientService");
-	ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("data.xml");
+	ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("proxibanque-data.xml");
 	
 //	IClientDao dao = (IClientDao) appContext.getBean("clientDao");
 //	IGerantDao gDao = (IGerantDao) appContext.getBean("gerantDao");
