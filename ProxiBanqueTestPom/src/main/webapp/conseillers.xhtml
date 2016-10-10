@@ -8,19 +8,20 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	
+
 </h:head>
 
 <h:body>
 
-
-<!-- 	<ui:composition template="/template/layout.xhtml">
- -->		<!-- redéfinition de la zone content du layout -->
-<!-- 		<ui:define name="content">
- -->			<center>
+	<!-- Declaration du template dont la page est cliente -->
+	<ui:composition template="/template/layout.xhtml">
+		<!-- redéfinition de la zone content du layout -->
+		<ui:define name="content">
+			<center>
 				<h:form id="formDataTable">
 					<p:panel header="Liste de vos conseillers" style="width: 700;" />
-					<p:dataTable var="conseiller" value="#{conseillerbean.listeConseiller}"
+					<p:dataTable var="conseiller"
+						value="#{conseillerbean.listeConseiller}"
 						selection="#{gerantbean.conseiller}" selectionMode="single"
 						style="width: 700" rowKey="#{conseiller.idEmploye}"
 						first="#{conseiller.idEmploye}" editable="true">
@@ -47,7 +48,7 @@
 							</f:facet>
 							<h:outputText value="#{conseiller.prenom}" />
 						</p:column>
-						
+
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="Supprimer le conseiller" />
@@ -66,12 +67,13 @@
 							border="0">
 
 							<h:outputLabel for="#{conseillerbean.nom}" value="Nom" />
-							<h:inputText value="#{gerantbean.conseiller.nom}" style="width: 100;"
-								editable="true"></h:inputText>
+							<h:inputText value="#{gerantbean.conseiller.nom}"
+								style="width: 100;" editable="true"></h:inputText>
 
 							<h:outputLabel for="#{conseillerbean.prenom}" value="Prenom" />
-							<h:inputText value="#{gerantbean.conseiller.prenom}" editable="true"></h:inputText>
-							
+							<h:inputText value="#{gerantbean.conseiller.prenom}"
+								editable="true"></h:inputText>
+
 							<h:commandButton type="submit" value="Modifier"
 								action="#{conseillerbean.modifier()}"></h:commandButton>
 
@@ -81,7 +83,7 @@
 
 				</h:form>
 			</center>
-<!-- 		</ui:define>
-	</ui:composition> -->
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

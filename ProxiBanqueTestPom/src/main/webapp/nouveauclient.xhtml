@@ -12,10 +12,11 @@
 </h:head>
 <body>
 
-<!-- 	<ui:composition template="/template/layout.xhtml">
- -->		<!-- redéfinition de la zone content du layout -->
-<!-- 		<ui:define name="content">
- -->			<center>
+	<!-- Declaration du template dont la page est cliente -->
+	<ui:composition template="/template/layout.xhtml">
+		<!-- redéfinition de la zone content du layout -->
+		<ui:define name="content">
+			<center>
 				<p:panel id="usercreateclient" header="Créer un client"
 					style="width: 700;">
 					<h:panelGrid columns="2" cellpadding="2" id="userCreateForm"
@@ -51,12 +52,12 @@
 							value="#{selectBooleanView.value2}" onLabel="Yes" offLabel="No"
 							style="width:60px" />
 
-							<h:commandButton type="submit" value="Ajouter"
-								action="#{clientbean.create()}" />
+						<h:commandButton type="submit" value="Ajouter"
+							action="#{clientbean.create()}" />
 					</h:panelGrid>
 				</p:panel>
 			</center>
-<!-- 		</ui:define>
-	</ui:composition> -->
+		</ui:define>
+	</ui:composition>
 </body>
 </html>

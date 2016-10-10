@@ -11,30 +11,30 @@
 
 </h:head>
 <body>
-
-<!-- 	<ui:composition template="/template/layout.xhtml">
- -->		<!-- redéfinition de la zone content du layout -->
-<!-- 		<ui:define name="content">
- -->			<center>
-			<p:panel id="transactions" header="Historique des transactions"
+	<!-- Declaration du template dont la page est cliente -->
+	<ui:composition template="/template/layout.xhtml">
+		<!-- redéfinition de la zone content du layout -->
+		<ui:define name="content">
+			<center>
+				<p:panel id="transactions" header="Historique des transactions"
 					style="width: 700;">
-				<h:form>
-					<p:growl id="growl" showDetail="true" />
+					<h:form>
+						<p:growl id="growl" showDetail="true" />
 
-					<h:panelGrid columns="2" columnClasses="left,right"
-						style="width:100%">				
+						<h:panelGrid columns="2" columnClasses="left,right"
+							style="width:100%">
 
-						<p:chart type="bar" model="#{chartView.barModel}"
-							style="width:400px;height:300px">
-							<p:ajax event="itemSelect" listener="#{chartView.itemSelect}"
-								update="growl" />
-						</p:chart>
-					</h:panelGrid>
+							<p:chart type="bar" model="#{chartView.barModel}"
+								style="width:400px;height:300px">
+								<p:ajax event="itemSelect" listener="#{chartView.itemSelect}"
+									update="growl" />
+							</p:chart>
+						</h:panelGrid>
 
-				</h:form>
+					</h:form>
 				</p:panel>
 			</center>
-<!-- 		</ui:define>
-	</ui:composition> -->
+		</ui:define>
+	</ui:composition>
 </body>
 </html>
