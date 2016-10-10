@@ -8,17 +8,23 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import com.sbev.proxibanque.domaine.Client;
 import com.sbev.proxibanque.domaine.Conseiller;
 import com.sbev.proxibanque.service.ClientService;
 
+
+@Controller("clientbean")
 @ManagedBean(name = "clientBean")
 @SessionScoped
 public class ClientBean {
 
 	private static final long serialVersionUID = 1L;
 
-	ClientService clientService = new ClientService();
+	@Autowired
+	private ClientService clientService;
 
 	private Client client;
 	private Conseiller conseiller;

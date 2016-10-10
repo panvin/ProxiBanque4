@@ -5,18 +5,22 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import com.sbev.proxibanque.domaine.Compte;
 import com.sbev.proxibanque.service.CompteService;
 
 
-
+@Controller("comptebean")
 @ManagedBean(name="compteBean")
 @SessionScoped
 public class CompteBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	CompteService compteservice = new CompteService();
+	@Autowired
+	private CompteService compteservice;
 	
 	
 	private Compte compte;

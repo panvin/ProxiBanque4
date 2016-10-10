@@ -12,6 +12,8 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import com.sbev.proxibanque.domaine.Client;
 import com.sbev.proxibanque.domaine.Conseiller;
@@ -19,7 +21,7 @@ import com.sbev.proxibanque.service.ClientService;
 import com.sbev.proxibanque.service.ConseillerService;
 
 
-
+@Controller("conseillerbean")
 @ManagedBean(name="conseillerBean")
 @SessionScoped
 public class ConseillerBean implements Serializable
@@ -29,8 +31,10 @@ public class ConseillerBean implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 
-	ClientService clientservice = new ClientService();
-	ConseillerService conseillerservice = new ConseillerService();
+	@Autowired
+	private ClientService clientservice;
+	@Autowired
+	private ConseillerService conseillerservice;
     
 
     /**
