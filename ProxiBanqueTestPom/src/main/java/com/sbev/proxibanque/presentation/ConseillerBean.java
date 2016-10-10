@@ -172,9 +172,9 @@ public class ConseillerBean implements Serializable
     	client =  null;
     }
     
-//	public String createUser()
-//	{
-//		clientservice.create(nom, prenom, adresse, email, soldeCourant, soldeEpargne, conseillerservice.read(login));
-//		return "home";
-//	}
+	public String sauverConseiller()
+	{
+		conseillerservice.sauverConseiller(conseiller);
+		return "clients";
+	}
 }

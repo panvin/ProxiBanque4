@@ -15,6 +15,7 @@ import org.primefaces.event.UnselectEvent;
 
 import com.sbev.proxibanque.domaine.Client;
 import com.sbev.proxibanque.domaine.Conseiller;
+import com.sbev.proxibanque.domaine.Gerant;
 import com.sbev.proxibanque.service.ConseillerService;
 import com.sbev.proxibanque.service.GerantService;
 
@@ -39,6 +40,15 @@ public class GerantBean implements Serializable {
 	// private String searchUser;
 	private List<Client> clientList;
 	private List<Conseiller> conseillerList;
+	private Gerant gerant; 
+
+	public Gerant getGerant() {
+		return gerant;
+	}
+
+	public void setGerant(Gerant gerant) {
+		this.gerant = gerant;
+	}
 
 	public List<Conseiller> getConseillerList() {
 		return conseillerList;
@@ -161,10 +171,9 @@ public class GerantBean implements Serializable {
 		client = null;
 	}
 
-	// public String createUser()
-	// {
-	// clientservice.create(nom, prenom, adresse, email, soldeCourant,
-	// soldeEpargne, conseillerservice.read(login));
-	// return "home";
-	// }
+	 public String sauverGerant()
+	 {
+	 gerantservice.sauverGerant(gerant);
+	 return "client";
+	 }
 }
