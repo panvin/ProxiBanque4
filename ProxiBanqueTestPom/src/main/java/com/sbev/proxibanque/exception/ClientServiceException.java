@@ -1,8 +1,8 @@
 package com.sbev.proxibanque.exception;
 
 /**
- * Classe d'exception personnalisée pour la classe ClientService
- * Cette classe permet  de gérer les exceptions causées par ClientService
+ * Classe d'exception personnalisee pour la classe ClientService
+ * Cette classe permet  de gerer les exceptions causees par ClientService
  * @author VIncent PANOUILLERES
  *
  */
@@ -11,22 +11,22 @@ public class ClientServiceException extends Exception {
 	private static final long serialVersionUID = -2140652444662783112L;
 
 	/**
-	 * Constructeur par défaut de la classe 
+	 * Constructeur par defaut de la classe 
 	 */
 	public ClientServiceException(){
 		super();
 	}
 	
 	/**
-	 * Constructeur de la classe prenant en compte les détails de l'erreur
-	 * @param details Les détails de l'erruer sous forme de chaine de caractere (String)
+	 * Constructeur de la classe prenant en compte les details de l'erreur
+	 * @param details Les details de l'erruer sous forme de chaine de caractere (String)
 	 */
 	public ClientServiceException(String details){
 		super(details);
 	}
 	
 	/**
-	 * Constructeur de la classe prenant en compte les détails de l'erreur et la cause de l'erreur
+	 * Constructeur de la classe prenant en compte les details de l'erreur et la cause de l'erreur
 	 * @param message Le message d'erruer (String)
 	 * @param cause La cause de l'erreur (Throwable)
 	 */
