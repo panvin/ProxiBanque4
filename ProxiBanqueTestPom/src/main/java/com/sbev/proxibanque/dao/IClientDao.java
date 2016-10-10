@@ -9,7 +9,7 @@ import com.sbev.proxibanque.domaine.Client;
 import com.sbev.proxibanque.domaine.Conseiller;
 
 /**
- * Classe permettant d'interagir avec la table client de la base de donnees grace au type Client et une clé de type Integer.
+ * Classe permettant d'interagir avec la table client de la base de donnees grace au type Client et une cle de type Integer.
  * Elle herite de l'interface JpaRepository de Spring Data.
  * @author Sylvain Chauvet
  */
