@@ -20,39 +20,39 @@
 					style="width: 700;">
 					<h:panelGrid columns="2" cellpadding="2" id="userCreateForm"
 						border="0">
-						<h:outputLabel for="#{client.nom}" value="Nom" />
-						<h:inputText value="#{client.nom}" style="width: 100;"
+						<h:outputLabel for="#{clientbean.nom}" value="Nom" />
+						<h:inputText value="#{clientbean.nom}" style="width: 100;"
 							editable="true"></h:inputText>
 
-						<h:outputLabel for="#{client.prenom}" value="Prenom" />
-						<h:inputText value="#{client.prenom}" editable="true"></h:inputText>
+						<h:outputLabel for="#{clientbean.prenom}" value="Prenom" />
+						<h:inputText value="#{clientbean.prenom}" editable="true"></h:inputText>
 
-						<h:outputLabel for="#{client.email}" value="Email" />
-						<h:inputText value="#{client.email}" editable="true"></h:inputText>
+						<h:outputLabel for="#{clientbean.email}" value="Email" />
+						<h:inputText value="#{clientbean.email}" editable="true"></h:inputText>
 
-						<h:outputLabel for="#{client.adresse}" value="Adresse" />
-						<h:inputText value="#{client.adresse}" editable="true"></h:inputText>
+						<h:outputLabel for="#{clientbean.adresse}" value="Adresse" />
+						<h:inputText value="#{clientbean.adresse}" editable="true"></h:inputText>
 
-						<h:outputLabel for="#{client.soldeCourant}"
+						<h:outputLabel for="#{clientbean.soldeCourant}"
 							value="Solde compte courant" />
-						<h:inputText value="#{client.soldeCourant}" editable="true"></h:inputText>
+						<h:inputText value="#{clientbean.soldeCourant}" editable="true"></h:inputText>
 
-						<h:outputLabel for="#{client.soldeEpargne}"
+						<h:outputLabel for="#{clientbean.soldeEpargne}"
 							value="Solde compte épargne" />
-						<h:inputText value="#{client.soldeEpargne}" editable="true"></h:inputText>
+						<h:inputText value="#{clientbean.soldeEpargne}" editable="true"></h:inputText>
 
 						<h:outputText value="Voulez-vous un compte courant?" />
 						<p:selectBooleanButton id="value1"
 							value="#{selectBooleanView.value1}" onLabel="Yes" offLabel="No"
 							style="width:60px" />
 
-						<h:outputText value="Voulez-vous un compte épargne?" />
+						<h:outputText value="Voulez-vous un compte courant?" />
 						<p:selectBooleanButton id="value2"
 							value="#{selectBooleanView.value2}" onLabel="Yes" offLabel="No"
-							onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:60px" />
+							style="width:60px" />
 
 							<h:commandButton type="submit" value="Ajouter"
-								action="#{client.create()}" />
+								action="#{clientbean.create()}" />
 					</h:panelGrid>
 				</p:panel>
 			</center>

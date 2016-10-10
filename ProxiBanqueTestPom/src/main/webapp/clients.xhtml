@@ -20,12 +20,12 @@
 			<center>
 				<h:form id="formDataTable">
 					<p:panel header="Liste de vos clients" style="width: 700;" />
-					<p:dataTable var="user" value="#{clients}"
-						selection="#{conseiller.client}" selectionMode="single"
+					<p:dataTable var="user" value="#{conseillerbean.listeClient}"
+						selection="#{conseillerbean.client}" selectionMode="single"
 						style="width: 700;" rowKey="#{user.idClient}"
 						first="#{user.idClient}" editable="true">
 						<p:ajax event="rowSelect" update=":formDataTable:userUpdateForm"
-							listener="#{conseiller.SelectUser}" />
+							listener="#{conseillerbean.SelectUser}" />
 
 
 						<p:column sortBy="#{user.idClient}">
@@ -94,7 +94,7 @@
 							</f:facet>
 
 							<h:commandLink type="delete" value="Supprimer le client"
-								action="#{client.supprimer(user)}">
+								action="#{clientbean.supprimer(user)}">
 							</h:commandLink>
 						</p:column>
 
@@ -105,21 +105,21 @@
 						<h:panelGrid columns="2" cellpadding="2" id="userUpdateForm"
 							border="0">
 
-							<h:outputLabel for="#{client.nom}" value="Nom" />
-							<h:inputText value="#{conseiller.client.nom}" style="width: 100;"
+							<h:outputLabel for="#{clientbean.nom}" value="Nom" />
+							<h:inputText value="#{conseillerbean.client.nom}" style="width: 100;"
 								editable="true"></h:inputText>
 
-							<h:outputLabel for="#{client.prenom}" value="Prenom" />
-							<h:inputText value="#{conseiller.client.prenom}" editable="true"></h:inputText>
+							<h:outputLabel for="#{clientbean.prenom}" value="Prenom" />
+							<h:inputText value="#{conseillerbean.client.prenom}" editable="true"></h:inputText>
 
-							<h:outputLabel for="#{client.email}" value="Email" />
-							<h:inputText value="#{conseiller.client.email}" editable="true"></h:inputText>
+							<h:outputLabel for="#{clientbean.email}" value="Email" />
+							<h:inputText value="#{conseillerbean.client.email}" editable="true"></h:inputText>
 
-							<h:outputLabel for="#{client.adresse}" value="Adresse" />
-							<h:inputText value="#{conseiller.client.adresse}" editable="true"></h:inputText>
+							<h:outputLabel for="#{clientbean.adresse}" value="Adresse" />
+							<h:inputText value="#{conseillerbean.client.adresse}" editable="true"></h:inputText>
 
 							<h:commandButton type="submit" value="Modifier"
-								action="#{client.modifier()}"></h:commandButton>
+								action="#{clientbean.modifier()}"></h:commandButton>
 
 						</h:panelGrid>
 					</p:panel>

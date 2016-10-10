@@ -20,12 +20,12 @@
  -->			<center>
 				<h:form id="formDataTable">
 					<p:panel header="Liste de vos conseillers" style="width: 700;" />
-					<p:dataTable var="conseiller" value="#{conseillers}"
-						selection="#{gerant.conseiller}" selectionMode="single"
+					<p:dataTable var="conseiller" value="#{conseillerbean.listeConseiller}"
+						selection="#{gerantbean.conseiller}" selectionMode="single"
 						style="width: 700" rowKey="#{conseiller.idEmploye}"
 						first="#{conseiller.idEmploye}" editable="true">
 						<p:ajax event="rowSelect" update=":formDataTable:userUpdateForm"
-							listener="#{gerant.SelectUser}" />
+							listener="#{gerantbean.SelectUser}" />
 
 
 						<p:column sortBy="#{conseiller.idEmploye}">
@@ -54,7 +54,7 @@
 							</f:facet>
 
 							<h:commandLink type="delete" value="Supprimer le conseiller"
-								action="#{conseiller.supprimer(conseiller)}">
+								action="#{conseillerbean.supprimer(conseiller)}">
 							</h:commandLink>
 						</p:column>
 
@@ -65,15 +65,15 @@
 						<h:panelGrid columns="2" cellpadding="2" id="userUpdateForm"
 							border="0">
 
-							<h:outputLabel for="#{conseiller.nom}" value="Nom" />
-							<h:inputText value="#{gerant.conseiller.nom}" style="width: 100;"
+							<h:outputLabel for="#{conseillerbean.nom}" value="Nom" />
+							<h:inputText value="#{gerantbean.conseiller.nom}" style="width: 100;"
 								editable="true"></h:inputText>
 
-							<h:outputLabel for="#{conseiller.prenom}" value="Prenom" />
-							<h:inputText value="#{gerant.conseiller.prenom}" editable="true"></h:inputText>
+							<h:outputLabel for="#{conseillerbean.prenom}" value="Prenom" />
+							<h:inputText value="#{gerantbean.conseiller.prenom}" editable="true"></h:inputText>
 							
 							<h:commandButton type="submit" value="Modifier"
-								action="#{conseiller.modifier()}"></h:commandButton>
+								action="#{conseillerbean.modifier()}"></h:commandButton>
 
 						</h:panelGrid>
 					</p:panel>
