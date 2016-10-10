@@ -59,6 +59,8 @@ public class ClientService {
 	 * @return La liste de tous les clients de ProxiBanque (objet de type List Client)
 	 */
 	public List<Client> lireToutClient(){
+		System.out.println("liste des clients");
+		System.out.println(clientDao.findAll());
 		return clientDao.findAll();
 	}
 	
