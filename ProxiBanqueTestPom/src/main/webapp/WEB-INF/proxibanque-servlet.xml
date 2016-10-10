@@ -17,13 +17,13 @@
 	<!-- <property name="employeManager" ref="employeManager"></property> -->
 	<!-- </bean> -->
 
-	<!-- <bean id="urlMapping" -->
-	<!-- class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"> -->
-	<!-- </bean> -->
+	<bean id="urlMapping"
+	class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+	</bean>
 
-	<!-- <bean name="/home.htm" class="com.objis.springmvcdemo.controleur.HomePageController"> -->
-	<!-- <property name="employeManager" ref="employeManager" /> -->
-	<!-- </bean> -->
+	<bean name="/home.htm" class="com.sbev.proxibanque.controller.HomePageController">
+	<property name="clientService" ref="clientService" />
+	</bean>
 
 	<!-- <bean id="simpleUrlMapping" -->
 	<!-- class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> -->

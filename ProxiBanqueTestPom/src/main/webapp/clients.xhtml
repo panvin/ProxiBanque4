@@ -19,72 +19,72 @@
 			<center>
 				<h:form id="formDataTable">
 					<p:panel header="Liste de vos clients" style="width: 700;" />
-					<p:dataTable var="user" value="#{conseillerbean.clientList1}"
-						selection="#{conseillerbean.client}" selectionMode="single"
-						style="width: 700;" rowKey="#{user.idClient}"
-						first="#{user.idClient}" editable="true">
+					<p:dataTable var="client" value="#{clients}"
+						selection="#{clients}" selectionMode="single"
+						style="width: 700;" rowKey="#{client.idClient}"
+						first="#{client.idClient}" editable="true">
 						<p:ajax event="rowSelect" update=":formDataTable:userUpdateForm"
 							listener="#{conseillerbean.SelectUser}" />
 
 
-						<p:column sortBy="#{user.idClient}">
+						<p:column sortBy="#{client.idClient}">
 							<f:facet name="header">
 								<h:outputText value="Id" />
 							</f:facet>
-							<h:outputText value="#{user.idClient}" />
+							<h:outputText value="#{client.idClient}" />
 						</p:column>
 
-						<p:column sortBy="#{user.nom}">
+						<p:column sortBy="#{client.nom}">
 							<f:facet name="header">
 								<h:outputText value="Nom" />
 							</f:facet>
-							<h:outputText value="#{user.nom}" />
+							<h:outputText value="#{client.nom}" />
 						</p:column>
-						<p:column sortBy="#{user.prenom}">
+						<p:column sortBy="#{client.prenom}">
 							<f:facet name="header">
 								<h:outputText value="Prenom" />
 							</f:facet>
-							<h:outputText value="#{user.prenom}" />
+							<h:outputText value="#{client.prenom}" />
 						</p:column>
-						<p:column sortBy="#{user.adresse}">
+						<p:column sortBy="#{client.adresse}">
 							<f:facet name="header">
 								<h:outputText value="Adresse" />
 							</f:facet>
-							<h:outputText value="#{user.adresse}" />
+							<h:outputText value="#{client.adresse}" />
 						</p:column>
-						<p:column sortBy="#{user.email}">
+						<p:column sortBy="#{client.email}">
 							<f:facet name="header">
 								<h:outputText value="Email" />
 							</f:facet>
-							<h:outputText value="#{user.email}" />
+							<h:outputText value="#{client.email}" />
 						</p:column>
 
-						<p:column sortBy="#{user.idCompte}">
+						<p:column sortBy="#{client.compteCourant.idCompte}">
 							<f:facet name="header">
 								<h:outputText value="Numéro de compte courant" />
 							</f:facet>
-							<h:outputText value="#{user.idCompte}" />
+							<h:outputText value="#{client.compteCourant.idCompte}" />
 						</p:column>
 
-						<p:column sortBy="#{user.solde}">
+						<p:column sortBy="#{client.compteCourant.solde}">
 							<f:facet name="header">
 								<h:outputText value="Solde compte courant" />
 							</f:facet>
-							<h:outputText value="#{user.solde}" />
+							<h:outputText value="#{client.compteCourant.solde}" />
 						</p:column>
 
-						<p:column sortBy="#{user.idCompte}">
+						<p:column sortBy="#{client.compteEpargne.idCompte}">
 							<f:facet name="header">
 								<h:outputText value="Numéro de compte epargne" />
 							</f:facet>
-							<h:outputText value="#{user.idCompte}" />
+							<h:outputText value="#{client.compteEpargne.idCompte}" />
 						</p:column>
 
-						<p:column sortBy="#{user.solde}">
+						<p:column sortBy="#{client.compteEpargne.solde}">
 							<f:facet name="header">
 								<h:outputText value="Solde compte epargne" />
 							</f:facet>
-							<h:outputText value="#{user.solde}" />
+							<h:outputText value="#{client.compteEpargne.solde}" />
 						</p:column>
 
 						<p:column>
@@ -93,38 +93,38 @@
 							</f:facet>
 
 							<h:commandLink type="delete" value="Supprimer le client"
-								action="#{clientbean.supprimer(user)}">
+								action="#{clientbean.supprimer(client)}">
 							</h:commandLink>
 						</p:column>
 
 					</p:dataTable>
 
-					<p:panel id="userDetailsPanelId" header="Modifier un client"
-						style="width: 700;" widgetVar="oneUser">
-						<h:panelGrid columns="2" cellpadding="2" id="userUpdateForm"
-							border="0">
+<!-- 					<p:panel id="userDetailsPanelId" header="Modifier un client" -->
+<!-- 						style="width: 700;" widgetVar="oneUser"> -->
+<!-- 						<h:panelGrid columns="2" cellpadding="2" id="userUpdateForm" -->
+<!-- 							border="0"> -->
 
-							<h:outputLabel for="#{clientbean.nom}" value="Nom" />
-							<h:inputText value="#{conseillerbean.client.nom}"
-								style="width: 100;" editable="true"></h:inputText>
+<!-- 							<h:outputLabel for="#{clientbean.nom}" value="Nom" /> -->
+<!-- 							<h:inputText value="#{conseillerbean.client.nom}" -->
+<!-- 								style="width: 100;" editable="true"></h:inputText> -->
 
-							<h:outputLabel for="#{clientbean.prenom}" value="Prenom" />
-							<h:inputText value="#{conseillerbean.client.prenom}"
-								editable="true"></h:inputText>
+<!-- 							<h:outputLabel for="#{clientbean.prenom}" value="Prenom" /> -->
+<!-- 							<h:inputText value="#{conseillerbean.client.prenom}" -->
+<!-- 								editable="true"></h:inputText> -->
 
-							<h:outputLabel for="#{clientbean.email}" value="Email" />
-							<h:inputText value="#{conseillerbean.client.email}"
-								editable="true"></h:inputText>
+<!-- 							<h:outputLabel for="#{clientbean.email}" value="Email" /> -->
+<!-- 							<h:inputText value="#{conseillerbean.client.email}" -->
+<!-- 								editable="true"></h:inputText> -->
 
-							<h:outputLabel for="#{clientbean.adresse}" value="Adresse" />
-							<h:inputText value="#{conseillerbean.client.adresse}"
-								editable="true"></h:inputText>
+<!-- 							<h:outputLabel for="#{clientbean.adresse}" value="Adresse" /> -->
+<!-- 							<h:inputText value="#{conseillerbean.client.adresse}" -->
+<!-- 								editable="true"></h:inputText> -->
 
-							<h:commandButton type="submit" value="Modifier"
-								action="#{clientbean.modifier()}"></h:commandButton>
+<!-- 							<h:commandButton type="submit" value="Modifier" -->
+<!-- 								action="#{clientbean.modifier()}"></h:commandButton> -->
 
-						</h:panelGrid>
-					</p:panel>
+<!-- 						</h:panelGrid> -->
+<!-- 					</p:panel> -->
 
 
 				</h:form>
