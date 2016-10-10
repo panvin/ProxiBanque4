@@ -66,7 +66,7 @@ public class HomePageController extends AbstractController {
 
 	List<Client> listeClient = clientService.lireToutClient();
 	System.out.println(listeClient);
-	return new ModelAndView("clients", "clients", listeClient);
+	return new ModelAndView("conseiller/clients", "clients", listeClient);
 	
 }
 }
