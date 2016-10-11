@@ -1,8 +1,10 @@
 package com.sbev.proxibanque.service;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -10,8 +12,6 @@ import org.mockito.MockitoAnnotations;
 
 import com.sbev.proxibanque.dao.IClientDao;
 import com.sbev.proxibanque.domaine.Client;
-
-import junit.framework.Assert;
 
 public class ClientServiceTest {
 
@@ -38,22 +38,22 @@ public class ClientServiceTest {
 
 	@Test
 	public void testLireClient() {
-		fail("Not yet implemented");
+		Client cltReturned;
+		Client clt = new Client("vincent", "panouilleres", "test", "test@test.com", null);
+		when(clientDao.findByIdClient(4)).thenReturn(clt);
+		cltReturned = clientService.lireClient(4);
+		Assert.assertNotNull(cltReturned);
 	}
 
 	@Test
 	public void testLireToutClient() {
-		fail("Not yet implemented");
+		ArrayList<Client> liste;
+		ArrayList<Client> liste2 = new ArrayList<Client>();
+		Client clt = new Client("vincent", "panouilleres", "test", "test@test.com", null);
+		liste2.add(clt);
+		when(clientDao.findAll()).thenReturn(liste2);
+		liste = (ArrayList<Client>) clientService.lireToutClient();
+		Assert.assertNotNull(liste);
+		
 	}
-
-	@Test
-	public void testSupprimerClient() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testLireClientParConseiller() {
-		fail("Not yet implemented");
-	}
-
 }

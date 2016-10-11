@@ -1,7 +1,8 @@
 package com.sbev.proxibanque.service;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -41,17 +42,21 @@ public class ConseillerServiceTest {
 
 	@Test
 	public void testLireConseiller() {
-		fail("Not yet implemented");
+		Conseiller consReturned;
+		Conseiller csl = new Conseiller("vincent", "panouilleres", "vpanouilleres", "test");
+		when(conseillerDao.findByIdEmploye(4)).thenReturn(csl);
+		consReturned = conseillerService.lireConseiller(4);
+		Assert.assertNotNull(consReturned);
 	}
 
 	@Test
 	public void testLireToutConseiller() {
-		fail("Not yet implemented");
+		ArrayList<Conseiller> liste;
+		ArrayList<Conseiller> liste2 = new ArrayList<Conseiller>();
+		Conseiller csl = new Conseiller("vincent", "panouilleres", "vpanouilleres", "test");
+		liste2.add(csl);
+		when(conseillerDao.findAll()).thenReturn(liste2);
+		liste = (ArrayList<Conseiller>) conseillerService.lireToutConseiller();
+		Assert.assertNotNull(liste);
 	}
-
-	@Test
-	public void testSupprimerConseiller() {
-		fail("Not yet implemented");
-	}
-
 }
