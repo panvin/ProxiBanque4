@@ -82,7 +82,7 @@
                     </f:facet>
 
                     <h:commandLink type="delete" value="Supprimer le client"
-                        action="#{clientbean.deleteUser(user)}">
+                        action="#{clientBean.deleteUser(user)}">
                         </h:commandLink>
                 </p:column> -->
                 
@@ -93,55 +93,26 @@
                 <h:panelGrid columns="2" cellpadding="2" id="userUpdateForm"
                     border="0">
                     
-                    <h:outputLabel for="#{clientbean.nom}" value="Nom" />
-                    <h:inputText value="#{conseillerbean.client.nom}"
+                    <h:outputLabel for="#{clientBean.client.nom}" value="Nom" />
+                    <h:inputText value="#{conseillerBean.client.nom}"
                         style="width: 100;" editable="true"></h:inputText>
 
-                    <h:outputLabel for="#{clientbean.prenom}" value="Prenom" />
-                    <h:inputText value="#{conseillerbean.client.prenom}"
+                    <h:outputLabel for="#{clientBean.client.prenom}" value="Prenom" />
+                    <h:inputText value="#{conseillerBean.client.prenom}"
                         editable="true"></h:inputText>
 
-                    <h:outputLabel for="#{clientbean.email}" value="Email" />
-                    <h:inputText value="#{conseillerbean.client.email}" editable="true"></h:inputText>
+                    <h:outputLabel for="#{clientBean.client.email}" value="Email" />
+                    <h:inputText value="#{conseillerBean.client.email}" editable="true"></h:inputText>
 
-                    <h:outputLabel for="#{clientbean.adresse}" value="Adresse" />
-                    <h:inputText value="#{conseillerbean.client.adresse}" editable="true"></h:inputText>
+                    <h:outputLabel for="#{clientBean.client.adresse}" value="Adresse" />
+                    <h:inputText value="#{conseillerBean.client.adresse}" editable="true"></h:inputText>
                     
-                    <h:commandButton type="submit" value="Modifier" action="#{clientbean.updateUser()}"></h:commandButton>
+                    <h:commandButton type="submit" value="Modifier" action="#{clientBean.updateUser()}"></h:commandButton>
 
                 </h:panelGrid>
             </p:panel>
             
-            <p:panel id="usercreateclient" header="Créer un client"
-                style="width: 700;">
-                <h:panelGrid columns="2" cellpadding="2" id="userCreateForm"
-                    border="0">
-                    <h:outputLabel for="#{clientbean.nom}" value="Nom" />
-                    <h:inputText value="#{clientbean.nom}" style="width: 100;" editable="true"></h:inputText>
-
-                    <h:outputLabel for="#{clientbean.prenom}" value="Prenom" />
-                    <h:inputText value="#{clientbean.prenom}" editable="true"></h:inputText>
-
-                    <h:outputLabel for="#{clientbean.email}" value="Email" />
-                    <h:inputText value="#{clientbean.email}" editable="true"></h:inputText>
-
-                    <h:outputLabel for="#{clientbean.adresse}" value="Adresse" />
-                    <h:inputText value="#{clientbean.adresse}" editable="true"></h:inputText>
-                    
-                    <h:outputLabel for="#{clientbean.soldeCourant}" value="Solde compte courant" />
-                    <h:inputText value="#{clientbean.soldeCourant}" editable="true"></h:inputText>
-                    
-                    <h:outputLabel for="#{clientbean.soldeEpargne}" value="Solde compte épargne" />
-                    <h:inputText value="#{clientbean.soldeEpargne}" editable="true"></h:inputText>
-                    
-                    <h:commandButton type="submit" value="Ajouter"
-                        action="#{clientbean.create()}"/>
-                </h:panelGrid>
-            </p:panel>
-<!--             <p:button outcome="productDetail" value="Virement" -->
-<!--                 href="virement.xhtml"> -->
-<!--                 <f:param name="productId" value="10" /> -->
-<!--             </p:button> -->
+ 
         </h:form>
     </center>
 

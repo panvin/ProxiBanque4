@@ -125,7 +125,7 @@ public class ConseillerBean implements Serializable
         {
         	conseiller = conseillerService.lireConseillerParLogin(login);
         	setClientList(clientService.lireClientParConseiller(conseiller));
-            return "home";
+            return "conseiller/clients";
         }
         else
         {
