@@ -3,19 +3,25 @@
 }
 
 #header {
-	height: 50px;
 	text-align: center;
 	background-color: lightblue;
 }
 
 #content {
-	top: 50px;
 	position: relative;
 }
 
 #footer {
 	height: 30px;
-	text-align: right;
-	position: absolute;
-	bottom: 0;
+	font: arial;
+	position: fixed;
+	bottom: 20px;
+}
+
+.outerpanelgrid>tbody>tr {
+	border: none;
+}
+
+.outerpanelgrid>tbody>tr>td {
+	border: none !important;
 }

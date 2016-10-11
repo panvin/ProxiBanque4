@@ -19,31 +19,31 @@
 		<!-- redéfinition de la zone content du layout -->
 		<ui:define name="content">
 			<center>
-				<p:panelGrid columns="2">
-					<p:panel header="Authentification conseiller" style="width: 350;">
+				<p:panelGrid columns="2" styleClass="outerpanelgrid">
+					<p:panel header="Authentification conseiller" style="width: 350;" >
 						<h:form>
 
 							<h:panelGrid columns="2" cellpadding="2">
-								<h:outputLabel for="#{conseillerBean.login}" value="Login" />
+								<h:outputLabel for="#{conseillerBean.login}" value="Identifiant " />
 								<h:inputText value="#{conseillerBean.login}" label="login"></h:inputText>
-								<h:outputLabel for="#{conseillerBean.password}" value="password" />
+								<h:outputLabel for="#{conseillerBean.password}" value="Mot de passe " />
 								<h:inputSecret value="#{conseillerBean.password}"></h:inputSecret>
 
-								<h:commandButton type="submit" value="Login"
+								<h:commandButton type="submit" value="Connexion"
 									action="#{conseillerBean.login1}"></h:commandButton>
 							</h:panelGrid>
 						</h:form>
 					</p:panel>
-					<p:panel header="Authentification gerant" style="width: 350;">
+					<p:panel header="Authentification gérant" style="width: 350;">
 						<h:form>
 
 							<h:panelGrid columns="2" cellpadding="2">
-								<h:outputLabel for="#{gerantBean.login}" value="Login" />
+								<h:outputLabel for="#{gerantBean.login}" value="Identifiant " />
 								<h:inputText value="#{gerantBean.login}" label="login"></h:inputText>
-								<h:outputLabel for="#{gerantBean.password}" value="password" />
+								<h:outputLabel for="#{gerantBean.password}" value="Mot de passe " />
 								<h:inputSecret value="#{gerantBean.password}"></h:inputSecret>
 
-								<h:commandButton type="submit" value="Login"
+								<h:commandButton type="submit" value="Connexion"
 									action="#{gerantBean.login1}"></h:commandButton>
 							</h:panelGrid>
 						</h:form>
