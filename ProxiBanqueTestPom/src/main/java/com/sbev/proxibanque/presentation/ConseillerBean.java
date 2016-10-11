@@ -21,7 +21,7 @@ import com.sbev.proxibanque.service.ClientService;
 import com.sbev.proxibanque.service.ConseillerService;
 
 
-@Controller("conseillerbean")
+@Controller
 @ManagedBean(name="conseillerBean")
 @SessionScoped
 public class ConseillerBean implements Serializable
@@ -32,9 +32,9 @@ public class ConseillerBean implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	private ClientService clientservice;
+	private ClientService clientService;
 	@Autowired
-	private ConseillerService conseillerservice;
+	private ConseillerService conseillerService;
     
 
     /**
@@ -43,7 +43,7 @@ public class ConseillerBean implements Serializable
     private String login;
     private String password;
 //    private String searchUser;
-    private List<Client> clientList;
+    private List<Client> clientList = clientService.lireToutClient();
     
     private Conseiller conseiller;
     private Client client;
@@ -94,10 +94,10 @@ public class ConseillerBean implements Serializable
     }
     
     
-//    public Collection<Client> getSearchUsersResults()
-//    {
-//        return searchUsersResults;
-//    }
+    public List<Client> getListeClients()
+    {
+        return clientService.lireToutClient();
+    }
 //    public void setSearchUsersResults(Collection<Client> searchUsersResults)
 //    {
 //        this.searchUsersResults = searchUsersResults;
@@ -180,16 +180,16 @@ public class ConseillerBean implements Serializable
     
 	public String sauverConseiller()
 	{
-		conseillerservice.sauverConseiller(conseiller);
+		conseillerService.sauverConseiller(conseiller);
 		return "clients";
 	}
 	public String lireToutClient(Client client) {		
-		clientservice.lireToutClient();		
+		clientService.lireToutClient();		
 		return "clients";
 	}
 	
 	 public List<Client> clientList1(){
-	    	return clientservice.lireToutClient();
+	    	return clientService.lireToutClient();
 	    }
 
 }
