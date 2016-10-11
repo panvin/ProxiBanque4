@@ -67,7 +67,7 @@ public class Virement {
 	public Virement(int idCompteDebiteur, int idCompteCrediteur, double montant) {
 		super();
 		//TODO modifier la date pour afficher la date actuelle (now)
-		this.date = null;
+		this.date = new Date();
 		this.idCompteDebiteur = idCompteDebiteur;
 		this.idCompteCrediteur = idCompteCrediteur;
 		this.montant = montant;

@@ -7,6 +7,9 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+
+import com.sbev.proxibanque.domaine.Conseiller;
 
 /**
  * Classe de la couche domaine
@@ -15,20 +18,31 @@ import javax.persistence.InheritanceType;
  *
  */
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="ROLE")
-@DiscriminatorValue("GERANT")
+//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name="ROLE")
+//@DiscriminatorValue("GERANT")
 public class Gerant extends Conseiller {
 	
-//	private List<Conseiller> conseillerList; 
-//
-//	public List<Conseiller> getConseillerList() {
-//		return conseillerList;
-//	}
-//
-//	public void setConseillerList(List<Conseiller> conseillerList) {
-//		this.conseillerList = conseillerList;
-//	}
+	@OneToMany(targetEntity=Conseiller.class)
+	private List<Conseiller> conseillerList;
+	@OneToMany(targetEntity=Virement.class)
+	private List<Virement> virementList;
+
+	public List<Conseiller> getConseillerList() {
+		return conseillerList;
+	}
+
+	public void setConseillerList(List<Conseiller> conseillerList) {
+		this.conseillerList = conseillerList;
+	}
+
+	public List<Virement> getVirementList() {
+		return virementList;
+	}
+
+	public void setVirementList(List<Virement> virementList) {
+		this.virementList = virementList;
+	}
 
 	/**
 	 *  Constructeur par défaut
@@ -46,8 +60,10 @@ public class Gerant extends Conseiller {
 	 * @param password Le mot de passe de l'employe (String)
 	 * @param clients La liste des clients affiliés au conseiller (List d'objets de type Client)
 	 */
-	public Gerant(int idEmploye, String prenom, String nom, String login, String password, List<Client> clients) {
+	public Gerant(int idEmploye, String prenom, String nom, String login, String password, List<Client> clients, List<Conseiller> conseillers, List<Virement> virements) {
 		super(idEmploye, prenom, nom, login, password, clients);
+		this.conseillerList = conseillers;
+		this.virementList= virements;
 	}
 
 	/**

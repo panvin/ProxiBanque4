@@ -19,13 +19,13 @@ import javax.persistence.OneToMany;
  *
  */
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="ROLE")
-@DiscriminatorValue("CONSEILLER")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+//@DiscriminatorColumn(name="ROLE")
+//@DiscriminatorValue("CONSEILLER")
 public class Conseiller extends Personne {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	private int idEmploye;
 	private String login;
 	private String password;

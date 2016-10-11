@@ -56,6 +56,7 @@ public class LanceurSylvain {
 	clientService.sauverClient(client3);
 	
 	compteService.virement(1, 2, 227);
+	compteService.virement(1, 3, 15.22);
 	
 	List<Client> listeClient = clientService.lireToutClient();
 	for (Client client : listeClient) {

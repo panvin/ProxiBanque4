@@ -6,29 +6,52 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
-<h:head >
-	
+
+<h:head>
+
 </h:head>
 <h:body>
-	<center>
-		<p:panel header="Authentification" style="width: 350;" >
-			<h:form>
-         
-			 <h:panelGrid columns="2" cellpadding="2">
-					<h:outputLabel for="#{conseillerBean.login}" value="Login" />
-					<h:inputText value="#{conseillerBean.login}" label="login"></h:inputText>
-					<h:outputLabel for="#{conseillerBean.password}" value="password" />
-					<h:inputSecret value="#{conseillerBean.password}"></h:inputSecret>
-					
-					<h:commandButton type="submit" value="Login"
-						action="#{conseillerBean.login1}"></h:commandButton>
-				</h:panelGrid>
-			</h:form>
-		</p:panel>
-		<div>
-			<h:messages></h:messages>
-		</div>
-	</center>
+
+	<!-- Declaration du template dont la page est cliente -->
+	<ui:composition template="/template/layout.xhtml">
+		<!-- redéfinition de la zone nav du layout -->
+		<ui:define name="menu"></ui:define>
+		<!-- redéfinition de la zone content du layout -->
+		<ui:define name="content">
+			<center>
+				<p:panelGrid columns="2">
+					<p:panel header="Authentification conseiller" style="width: 350;">
+						<h:form>
+
+							<h:panelGrid columns="2" cellpadding="2">
+								<h:outputLabel for="#{conseillerBean.login}" value="Login" />
+								<h:inputText value="#{conseillerBean.login}" label="login"></h:inputText>
+								<h:outputLabel for="#{conseillerBean.password}" value="password" />
+								<h:inputSecret value="#{conseillerBean.password}"></h:inputSecret>
+
+								<h:commandButton type="submit" value="Login"
+									action="#{conseillerBean.login1}"></h:commandButton>
+							</h:panelGrid>
+						</h:form>
+					</p:panel>
+					<p:panel header="Authentification gerant" style="width: 350;">
+						<h:form>
+
+							<h:panelGrid columns="2" cellpadding="2">
+								<h:outputLabel for="#{gerantBean.login}" value="Login" />
+								<h:inputText value="#{gerantBean.login}" label="login"></h:inputText>
+								<h:outputLabel for="#{gerantBean.password}" value="password" />
+								<h:inputSecret value="#{gerantBean.password}"></h:inputSecret>
+
+								<h:commandButton type="submit" value="Login"
+									action="#{gerantBean.login1}"></h:commandButton>
+							</h:panelGrid>
+						</h:form>
+					</p:panel>
+				</p:panelGrid>
+
+			</center>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

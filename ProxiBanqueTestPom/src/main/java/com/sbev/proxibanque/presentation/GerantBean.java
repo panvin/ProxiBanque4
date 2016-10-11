@@ -246,10 +246,10 @@ public class GerantBean implements Serializable {
      */
     public String login1()
     {
-    	boolean a = conseillerService.estValide(login, password);
+    	boolean a = gerantService.estValide(login, password);
         if(a == true)
         {
-        	conseiller = conseillerService.lireConseillerParLogin(login);
+        	gerant = gerantService.lireGerantParLogin(login);
         	setClientList(clientService.lireClientParConseiller(conseiller));
             return "conseiller/clients";
         }
