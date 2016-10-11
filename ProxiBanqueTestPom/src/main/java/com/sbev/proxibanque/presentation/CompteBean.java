@@ -12,6 +12,11 @@ import com.sbev.proxibanque.domaine.Compte;
 import com.sbev.proxibanque.service.CompteService;
 
 
+/**
+ * Classe permettant de gerer l'ihm pour les comptes
+ * @author Elise Patteyn et Brice Tardy
+ *
+ */
 @Controller
 @ManagedBean(name="compteBean")
 @SessionScoped
@@ -31,9 +36,6 @@ public class CompteBean implements Serializable{
 	public CompteBean() {
 		super();
 	}
-	
-	
-//	private double soldeCourant = (double) compteservice.read(iDCourant).getSolde();
 	
 	public CompteService getCompteService() {
 		return compteService;
@@ -94,6 +96,10 @@ public class CompteBean implements Serializable{
 	}
 
 
+	/**
+	 * Methode permettant de faire un virement a partir de l'ihm. Fait appel a la couche service
+	 * @return Redirection
+	 */
 	public String faireVirement() {
 		compteService.virement(idcomptedeb, idcomptecred, montant);
 		return "clients";

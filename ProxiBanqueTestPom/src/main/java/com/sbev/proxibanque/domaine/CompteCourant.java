@@ -1,12 +1,10 @@
 package com.sbev.proxibanque.domaine;
 
-import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
 
 /**
  * Méthode de la couche Domaine

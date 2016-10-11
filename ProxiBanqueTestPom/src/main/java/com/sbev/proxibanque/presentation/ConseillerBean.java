@@ -19,6 +19,11 @@ import com.sbev.proxibanque.service.ClientService;
 import com.sbev.proxibanque.service.ConseillerService;
 
 
+/**
+ * Methode permettant de traiter les gerants 
+ * @author Brice Tardy et Elise Patteyn
+ *
+ */
 @Controller
 @ManagedBean(name="conseillerBean")
 @SessionScoped
@@ -39,7 +44,6 @@ public class ConseillerBean implements Serializable
      */
     private String login;
     private String password;
-//    private String searchUser;
     private List<Client> clientList;
     private Conseiller conseiller;
     private Client client;
@@ -51,9 +55,7 @@ public class ConseillerBean implements Serializable
     
     public ConseillerBean() {
 		super();
-	}
-    
-    
+	} 
     
     public List<Client> getClientList() {
 		return clientList;
@@ -89,84 +91,48 @@ public class ConseillerBean implements Serializable
         this.client = client;
     }
     
-    
-    
-    
-//    public Collection<Client> getSearchUsersResults()
-//    {
-//        return searchUsersResults;
-//    }
-//    public void setSearchUsersResults(Collection<Client> searchUsersResults)
-//    {
-//        this.searchUsersResults = searchUsersResults;
-//    }
-//    public String getSearchUser()
-//    {
-//        return searchUser;
-//    }
-//    public void setSearchUser(String searchUser)
-//    {
-//        this.searchUser = searchUser;
-//    }
-    
     public String getNom() {
 		return nom;
 	}
-
-
 
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-
-
 	public String getPrenom() {
 		return prenom;
 	}
-
-
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 
-
-
 	public String getAdresse() {
 		return adresse;
 	}
-
-
 
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
 
-
-
 	public String getEmail() {
 		return email;
 	}
-
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
-
 	public Conseiller getConseiller() {
 		return conseiller;
 	}
+	
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
 
-
-
 	/**
+	 * Methode permettant le login du conseiller
      * @return the page login.xhtml or home.xhtml if the condition is true or false
      */
     public String login1()
@@ -185,55 +151,49 @@ public class ConseillerBean implements Serializable
             return "login";
         }
     }
-    
+ 
     /**
-     * @return the page home.xhtml
+     * Methode permettant de selectionner une ligne dans l'ihm
+     * @param event
      */
-//    public String searchUser()
-//    {
-//        String login = (this.searchUser == null)? "":this.searchUser.trim();        
-//        this.searchUsersResults = clientService.searchUser(login);
-//        System.out.println("Notre liste contient: "+searchUsersResults.size());
-//       return "home";
-//    }
-    
-//    public List<Client> clientList1(){
-//    	return clientService.lireClientParConseiller(conseillerService.lireConseillerParLogin(login));
-//    }
-    
     public void rowSelect(SelectEvent event){
     	client =  (Client)event.getObject();
     	System.out.println("selectedUser = "+client.getNom());	
     }
-   
     
-    
-    
-    
-    
+    /**
+     * Methode permettant de selectionner un utilisateur dans l'ihm
+     * @param event
+     */
     public void onUserSelect(SelectEvent event){ 
     	this.client =  (Client)event.getObject();
     	System.out.println("selectedUser = "+client.getNom());
     }
     
+    /**
+     * Methode permettant de selectionner un utilisateur dans l'ihm
+     * @param event
+     */
     public void onUserUnselect(UnselectEvent event)
     {
     	client =  null;
     }
     
+    /**
+     * Methode permettant de sauver un client en base a partir de l'ihm
+     * @return Redirection
+     */
     public String sauverClient() {
 		clientService.sauverClient(client);
 		return "clients";
 	}
     
+    /**
+     * Methode permettant de supprimer un clien en base a partir de l'ihm
+     * @return Redirection
+     */
     public String supprimerClient() {
     	clientService.supprimerClient(client);
     	return "clients";
     }
-    
-//	public String createUser()
-//	{
-//		clientservice.create(nom, prenom, adresse, email, soldeCourant, soldeEpargne, conseillerservice.read(login));
-//		return "home";
-//	}
 }

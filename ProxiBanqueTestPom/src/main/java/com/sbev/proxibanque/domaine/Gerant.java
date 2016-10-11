@@ -2,11 +2,7 @@ package com.sbev.proxibanque.domaine;
 
 import java.util.List;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
 import com.sbev.proxibanque.domaine.Conseiller;

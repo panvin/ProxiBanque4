@@ -16,6 +16,11 @@ import com.sbev.proxibanque.service.CompteService;
 import com.sbev.proxibanque.service.ConseillerService;
 import com.sbev.proxibanque.service.GerantService;
 
+/**
+ * HomePagerController utilisé par SpringWeb MVC
+ * @author Sylvain Chauvet Vincent Panouilleres Elise Patteyn et Brica Tardy
+ *
+ */
 @Controller
 public class HomePageController extends AbstractController {
 	

@@ -1,6 +1,5 @@
 package com.sbev.proxibanque.domaine;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Entity;

@@ -14,6 +14,11 @@ import com.sbev.proxibanque.domaine.Conseiller;
 import com.sbev.proxibanque.service.ClientService;
 
 
+/**
+ * Bean utilise pour gerer les clients
+ * @author Brice Tardy et Elise Patteyn
+ *
+ */
 @Controller
 @ManagedBean(name = "clientBean")
 @SessionScoped
@@ -36,8 +41,6 @@ public class ClientBean {
 
 	public ClientBean() {
 		super();
-		
-		//this.conseiller = clientService.lireConseillerParClient(client);
 	}
 
 	public ClientService getClientService() {
@@ -117,29 +120,15 @@ public class ClientBean {
 		this.epargne = epargne;
 	}
 
-//	public String sauverClient() {
-//		ConseillerBean conseillerinsession = (ConseillerBean) FacesContext.getCurrentInstance().getExternalContext()
-//				.getSessionMap().get("conseillerBean");
-//		clientService.sauverClient(conseillerinsession.getClient());
-//		conseillerinsession.setClientList(clientService.lireClientParConseiller(conseillerinsession.getConseiller()));
-//		return "clients";
-//	}
-	
-	public String creerClient() {
+		/**
+		 *  Methode permettant de creer un un client en base de donnees a partir de l IHM
+		 * @return Retourne la page vers laquelle la redirection se fait a partir de l'action de creation de clients
+		 */
+		public String creerClient() {
 		ConseillerBean conseillerinsession = (ConseillerBean) FacesContext.getCurrentInstance().getExternalContext()
 				.getSessionMap().get("conseillerBean");
 		clientService.sauverClient(client);
 		conseillerinsession.setClientList(clientService.lireClientParConseiller(conseillerinsession.getConseiller()));
 		return "clients";
 	}
-
-//	public String supprimerClient(Client client) {
-//		ConseillerBean conseillerinsession = (ConseillerBean) FacesContext.getCurrentInstance().getExternalContext()
-//				.getSessionMap().get("conseillerBean");
-//		clientService.supprimerClient(client);
-//		conseillerinsession.setClientList(clientService.lireClientParConseiller(conseillerinsession.getConseiller()));
-//		return "clients";
-//	}
-	
-
 }

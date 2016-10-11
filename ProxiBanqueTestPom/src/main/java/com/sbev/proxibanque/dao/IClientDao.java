@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.sbev.proxibanque.domaine.Client;
 import com.sbev.proxibanque.domaine.Conseiller;
-import com.sbev.proxibanque.domaine.Gerant;
 
 /**
  * Classe permettant d'interagir avec la table client de la base de donnees grace au type Client et une cle de type Integer.

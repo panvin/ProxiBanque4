@@ -1,8 +1,6 @@
 package com.sbev.proxibanque.presentation;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -25,6 +23,11 @@ import com.sbev.proxibanque.service.ConseillerService;
 import com.sbev.proxibanque.service.GerantService;
 
 
+/**
+ * Classe permettant de gerer le gerant a partir de l'ihm.
+ * @author Brice Tardy et Elise Patteyn
+ *
+ */
 @Controller
 @ManagedBean(name = "gerantBean")
 @SessionScoped
@@ -192,25 +195,6 @@ public class GerantBean implements Serializable {
     }
     
     
-    
-    
-//    public Collection<Client> getSearchUsersResults()
-//    {
-//        return searchUsersResults;
-//    }
-//    public void setSearchUsersResults(Collection<Client> searchUsersResults)
-//    {
-//        this.searchUsersResults = searchUsersResults;
-//    }
-//    public String getSearchUser()
-//    {
-//        return searchUser;
-//    }
-//    public void setSearchUser(String searchUser)
-//    {
-//        this.searchUser = searchUser;
-//    }
-    
     public String getNom() {
 		return nom;
 	}
@@ -271,6 +255,7 @@ public class GerantBean implements Serializable {
 
 
 	/**
+	 * Methode pour l'authentification
      * @return the page login.xhtml or home.xhtml if the condition is true or false
      */
     public String login1()
@@ -292,21 +277,15 @@ public class GerantBean implements Serializable {
         }
     }
     
-    /**
-     * @return the page home.xhtml
-     */
-//    public String searchUser()
-//    {
-//        String login = (this.searchUser == null)? "":this.searchUser.trim();        
-//        this.searchUsersResults = clientService.searchUser(login);
-//        System.out.println("Notre liste contient: "+searchUsersResults.size());
-//       return "home";
-//    }
     
     public List<Client> clientList1(){
     	return clientService.lireClientParConseiller(conseillerService.lireConseillerParLogin(login));
     }
     
+    /**
+     * Selection de ligne dans une table
+     * @param event
+     */
     public void rowSelect(SelectEvent event){
     	client =  (Client)event.getObject();
     	System.out.println("selectedUser = "+client.getNom());	
@@ -319,24 +298,30 @@ public class GerantBean implements Serializable {
     
     
     
+    /**
+     * Methode permettant la selection d'un utilisateur
+     * @param event
+     */
     public void onUserSelect(SelectEvent event){ 
     	this.conseiller =  (Conseiller)event.getObject();
     	System.out.println("selectedUser = "+conseiller.getNom());
     }
     
+    /**
+     * Methode permettant la selection d'un utilisateur
+     * @param event
+     */
     public void onUserUnselect(UnselectEvent event)
     {
     	conseiller =  null;
     }
     
+    /**
+     * Methode permettant de sauver un conseiller
+     * @return Redirection
+     */
     public String sauverConseiller() {
 		conseillerService.sauverConseiller(conseiller);
 		return "gerant/conseillers";
 	}
-    
-//	public String createUser()
-//	{
-//		clientservice.create(nom, prenom, adresse, email, soldeCourant, soldeEpargne, conseillerservice.read(login));
-//		return "home";
-//	}
 }
