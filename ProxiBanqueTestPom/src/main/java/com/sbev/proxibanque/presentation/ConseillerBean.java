@@ -1,8 +1,6 @@
 package com.sbev.proxibanque.presentation;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -35,7 +33,6 @@ public class ConseillerBean implements Serializable
 	private ClientService clientService;
 	@Autowired
 	private ConseillerService conseillerService;
-    
 
     /**
      * 
@@ -46,6 +43,10 @@ public class ConseillerBean implements Serializable
     private List<Client> clientList;
     private Conseiller conseiller;
     private Client client;
+	private String nom;
+	private String prenom;
+	private String adresse;
+	private String email;
     
     
     public ConseillerBean() {
@@ -89,6 +90,8 @@ public class ConseillerBean implements Serializable
     }
     
     
+    
+    
 //    public Collection<Client> getSearchUsersResults()
 //    {
 //        return searchUsersResults;
@@ -106,7 +109,55 @@ public class ConseillerBean implements Serializable
 //        this.searchUser = searchUser;
 //    }
     
-    public Conseiller getConseiller() {
+    public String getNom() {
+		return nom;
+	}
+
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public Conseiller getConseiller() {
 		return conseiller;
 	}
 	public void setConseiller(Conseiller conseiller) {
@@ -169,6 +220,15 @@ public class ConseillerBean implements Serializable
     {
     	client =  null;
     }
+    
+    public String sauverClient() {
+		client.setAdresse(adresse);
+		client.setNom(nom);
+		client.setPrenom(prenom);
+		client.setAdresse(adresse);
+		clientService.sauverClient(client);
+		return "clients";
+	}
     
 //	public String createUser()
 //	{
