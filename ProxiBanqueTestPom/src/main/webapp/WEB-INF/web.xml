@@ -52,7 +52,7 @@
 		<web-resource-collection>
 			<web-resource-name>Pages conseillers</web-resource-name>
 			<description>Pages accessibles a tous les conseillers</description>
-			<url-pattern>/*</url-pattern>
+			<url-pattern>/conseiller/*</url-pattern>
 		</web-resource-collection>
 		<!-- Qui ? -->
 		<auth-constraint>
@@ -60,20 +60,20 @@
 			<role-name>GERANT</role-name>
 		</auth-constraint>
 	</security-constraint>
-<!-- 	<security-constraint>
+	<security-constraint>
 		<display-name>Gerant ProxiBanque</display-name>
-		Quoi ?
+		<!-- Quoi ? -->
 		<web-resource-collection>
 			<web-resource-name>Pages gerants</web-resource-name>
 			<description>Pages accessibles aux gerants uniquements</description>
 			<url-pattern>/conseiller/*</url-pattern>
 			<url-pattern>/gerant/*</url-pattern>
 		</web-resource-collection>
-		Qui ?
+		<!-- Qui ? -->
 		<auth-constraint>
 			<role-name>GERANT</role-name>
 		</auth-constraint>
-	</security-constraint> -->
+	</security-constraint>
 	<!-- Comment ? -->
 	<login-config>
 		<auth-method>FORM</auth-method>
