@@ -132,25 +132,7 @@ public class GerantBean implements Serializable {
 		this.conseiller = conseiller;
 	}
 
-	/**
-     * @return the page login.xhtml or home.xhtml if the condition is true or false
-     */
-    public String login1()
-    {
-    	boolean a = gerantService.estValide(login, password);
-        if(a == true)
-        {
-        	gerant = gerantService.lireGerantParLogin(login);
-        	setClientList(clientService.lireClientParGerant(gerant));
-            return "conseiller/clients";
-        }
-        else
-        {
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage("login", new FacesMessage("L'identifiant ou le mot de passe saisi est invalide"));
-            return "login";
-        }
-    }
+
     
     /**
      * @return the page home.xhtml
@@ -163,9 +145,7 @@ public class GerantBean implements Serializable {
 //       return "home";
 //    }
     
-    public List<Client> clientList1(){
-    	return clientService.lireClientParGerant(gerantService.lireGerantParLogin(login));
-    }
+
     
     public void rowSelect(SelectEvent event){
     	client =  (Client)event.getObject();

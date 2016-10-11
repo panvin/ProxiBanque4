@@ -31,13 +31,4 @@ public interface IClientDao extends JpaRepository <Client, Integer> {
 	 * @return une liste de Clients
 	 */
 	public List<Client> findByConseiller (Conseiller conseiller);
-
-	/**
-	 * Permet de retrouver des Clients par leur gerant
-	 * @param gerant Gerant des clients à retrouver
-	 * @return une liste de Clients
-	 */
-	public List<Client> findClientByGerant (Gerant gerant);
-	
-	public Conseiller findConseillerByClient (Client client);
 }

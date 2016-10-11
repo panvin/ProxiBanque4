@@ -81,13 +81,4 @@ public class ClientService {
 	public List<Client> lireClientParConseiller(Conseiller conseiller){
 		return clientDao.findByConseiller(conseiller);
 	}
-	
-	public List<Client> lireClientParGerant(Gerant gerant){
-		return clientDao.findClientByGerant(gerant);
-	}
-	
-	public Conseiller lireConseillerParClient (Client client){
-		return clientDao.findConseillerByClient(client);
-	}
-
 }
