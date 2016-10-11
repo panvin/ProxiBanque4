@@ -226,6 +226,11 @@ public class ConseillerBean implements Serializable
 		return "clients";
 	}
     
+    public String supprimerClient() {
+    	clientService.supprimerClient(client);
+    	return "clients";
+    }
+    
 //	public String createUser()
 //	{
 //		clientservice.create(nom, prenom, adresse, email, soldeCourant, soldeEpargne, conseillerservice.read(login));

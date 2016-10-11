@@ -117,13 +117,13 @@ public class ClientBean {
 		this.epargne = epargne;
 	}
 
-	public String sauverClient() {
-		ConseillerBean conseillerinsession = (ConseillerBean) FacesContext.getCurrentInstance().getExternalContext()
-				.getSessionMap().get("conseillerBean");
-		clientService.sauverClient(conseillerinsession.getClient());
-		conseillerinsession.setClientList(clientService.lireClientParConseiller(conseillerinsession.getConseiller()));
-		return "clients";
-	}
+//	public String sauverClient() {
+//		ConseillerBean conseillerinsession = (ConseillerBean) FacesContext.getCurrentInstance().getExternalContext()
+//				.getSessionMap().get("conseillerBean");
+//		clientService.sauverClient(conseillerinsession.getClient());
+//		conseillerinsession.setClientList(clientService.lireClientParConseiller(conseillerinsession.getConseiller()));
+//		return "clients";
+//	}
 	
 	public String creerClient() {
 		ConseillerBean conseillerinsession = (ConseillerBean) FacesContext.getCurrentInstance().getExternalContext()
@@ -133,13 +133,13 @@ public class ClientBean {
 		return "clients";
 	}
 
-	public String supprimerClient(Client client) {
-		ConseillerBean conseillerinsession = (ConseillerBean) FacesContext.getCurrentInstance().getExternalContext()
-				.getSessionMap().get("conseillerBean");
-		clientService.supprimerClient(client);
-		conseillerinsession.setClientList(clientService.lireClientParConseiller(conseillerinsession.getConseiller()));
-		return "clients";
-	}
+//	public String supprimerClient(Client client) {
+//		ConseillerBean conseillerinsession = (ConseillerBean) FacesContext.getCurrentInstance().getExternalContext()
+//				.getSessionMap().get("conseillerBean");
+//		clientService.supprimerClient(client);
+//		conseillerinsession.setClientList(clientService.lireClientParConseiller(conseillerinsession.getConseiller()));
+//		return "clients";
+//	}
 	
 
 }
