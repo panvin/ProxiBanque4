@@ -19,4 +19,6 @@ public interface IGerantDao extends JpaRepository<Gerant, Integer>{
 	 * @return un Gerant
 	 */
 	public Gerant findByIdEmploye (int id);
+	
+	public Gerant findGerantByLogin (String login);
 }

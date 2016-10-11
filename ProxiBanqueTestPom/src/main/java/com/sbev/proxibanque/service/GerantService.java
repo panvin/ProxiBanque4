@@ -68,6 +68,10 @@ public class GerantService {
 		return gerantDao.findAll();
 	}
 	
+	public Gerant lireGerantParLogin (String login){
+		return gerantDao.findGerantByLogin(login);
+	}
+	
 	/**
 	 * Permet de supprimer un Gerant de la base de donnees
 	 * @param gerant Le Gerant a supprimer
@@ -83,5 +87,12 @@ public class GerantService {
 	public List<Virement> lireToutVirement(){
 		return virementDao.findAll();
 	}
-
+	
+	public boolean estValide (String login, String password){
+		String expectedPass = gerantDao.findGerantByLogin(login).getPassword();
+			if (expectedPass != null && expectedPass.equalsIgnoreCase(password))
+				return true;
+			else
+				return false;
+	}
 }

@@ -12,7 +12,7 @@ import com.sbev.proxibanque.domaine.Compte;
 import com.sbev.proxibanque.service.CompteService;
 
 
-@Controller("comptebean")
+@Controller
 @ManagedBean(name="compteBean")
 @SessionScoped
 public class CompteBean implements Serializable{
@@ -20,7 +20,7 @@ public class CompteBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Autowired
-	private CompteService compteservice;
+	private CompteService compteService;
 	
 	
 	private Compte compte;

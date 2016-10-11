@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sbev.proxibanque.domaine.Client;
 import com.sbev.proxibanque.domaine.Conseiller;
+import com.sbev.proxibanque.domaine.Gerant;
 
 /**
  * Classe permettant d'interagir avec la table client de la base de donnees grace au type Client et une cle de type Integer.
@@ -31,4 +32,12 @@ public interface IClientDao extends JpaRepository <Client, Integer> {
 	 */
 	public List<Client> findByConseiller (Conseiller conseiller);
 
+	/**
+	 * Permet de retrouver des Clients par leur gerant
+	 * @param gerant Gerant des clients à retrouver
+	 * @return une liste de Clients
+	 */
+	public List<Client> findClientByGerant (Gerant gerant);
+	
+	public Conseiller findConseillerByClient (Client client);
 }

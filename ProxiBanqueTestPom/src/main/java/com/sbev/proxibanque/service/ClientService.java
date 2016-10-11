@@ -2,6 +2,7 @@ package com.sbev.proxibanque.service;
 
 import com.sbev.proxibanque.domaine.Client;
 import com.sbev.proxibanque.domaine.Conseiller;
+import com.sbev.proxibanque.domaine.Gerant;
 
 import java.util.List;
 
@@ -81,5 +82,12 @@ public class ClientService {
 		return clientDao.findByConseiller(conseiller);
 	}
 	
+	public List<Client> lireClientParGerant(Gerant gerant){
+		return clientDao.findClientByGerant(gerant);
+	}
+	
+	public Conseiller lireConseillerParClient (Client client){
+		return clientDao.findConseillerByClient(client);
+	}
 
 }

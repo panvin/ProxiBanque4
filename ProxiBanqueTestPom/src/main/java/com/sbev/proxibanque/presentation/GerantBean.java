@@ -18,11 +18,12 @@ import org.springframework.stereotype.Controller;
 import com.sbev.proxibanque.domaine.Client;
 import com.sbev.proxibanque.domaine.Conseiller;
 import com.sbev.proxibanque.domaine.Gerant;
+import com.sbev.proxibanque.service.ClientService;
 import com.sbev.proxibanque.service.ConseillerService;
 import com.sbev.proxibanque.service.GerantService;
 
 
-@Controller("gerantbean")
+@Controller
 @ManagedBean(name = "gerantBean")
 @SessionScoped
 public class GerantBean implements Serializable {
@@ -32,9 +33,11 @@ public class GerantBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	private GerantService gerantservice;
+	private GerantService gerantService;
 	@Autowired
-	private ConseillerService conseillerservice;
+	private ConseillerService conseillerService;
+	@Autowired
+	private ClientService clientService;
 
 	/**
 	 * 
@@ -130,54 +133,58 @@ public class GerantBean implements Serializable {
 	}
 
 	/**
-	 * @return the page login.xhtml or home.xhtml if the condition is true or
-	 *         false
-	 */
-//	public String login1() {
-//		boolean a = gerantservice.estValide(login, password);
-//		if (a == true) {
-//			gerant = gerantservice.read(login);
-//			setClientList(clientservice.getTargetedClients(gerant));
-//			return "clients";
-//		} else {
-//			FacesContext context = FacesContext.getCurrentInstance();
-//			context.addMessage("login", new FacesMessage("L'identifiant ou le mot de passe saisi est invalide"));
-//			return "login";
-//		}
+     * @return the page login.xhtml or home.xhtml if the condition is true or false
+     */
+    public String login1()
+    {
+    	boolean a = gerantService.estValide(login, password);
+        if(a == true)
+        {
+        	gerant = gerantService.lireGerantParLogin(login);
+        	setClientList(clientService.lireClientParGerant(gerant));
+            return "conseiller/clients";
+        }
+        else
+        {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("login", new FacesMessage("L'identifiant ou le mot de passe saisi est invalide"));
+            return "login";
+        }
+    }
+    
+    /**
+     * @return the page home.xhtml
+     */
+//    public String searchUser()
+//    {
+//        String login = (this.searchUser == null)? "":this.searchUser.trim();        
+//        this.searchUsersResults = clientService.searchUser(login);
+//        System.out.println("Notre liste contient: "+searchUsersResults.size());
+//       return "home";
+//    }
+    
+    public List<Client> clientList1(){
+    	return clientService.lireClientParGerant(gerantService.lireGerantParLogin(login));
+    }
+    
+    public void rowSelect(SelectEvent event){
+    	client =  (Client)event.getObject();
+    	System.out.println("selectedUser = "+client.getNom());	
+    }
+   
+    public void onUserSelect(SelectEvent event){ 
+    	this.client =  (Client)event.getObject();
+    	System.out.println("selectedUser = "+client.getNom());
+    }
+    
+    public void onUserUnselect(UnselectEvent event)
+    {
+    	client =  null;
+    }
+    
+//	public String createUser()
+//	{
+//		clientservice.create(nom, prenom, adresse, email, soldeCourant, soldeEpargne, conseillerservice.read(login));
+//		return "home";
 //	}
-
-	/**
-	 * @return the page home.xhtml
-	 */
-	// public String searchUser()
-	// {
-	// String login = (this.searchUser == null)? "":this.searchUser.trim();
-	// this.searchUsersResults = clientService.searchUser(login);
-	// System.out.println("Notre liste contient: "+searchUsersResults.size());
-	// return "home";
-	// }
-
-//	public List<Client> clientList1() {
-//		return clientservice.getTargetedClients(gerantservice.read(login));
-//	}
-
-	public void rowSelect(SelectEvent event) {
-		client = (Client) event.getObject();
-		System.out.println("selectedUser = " + client.getNom());
-	}
-
-	public void onUserSelect(SelectEvent event) {
-		this.client = (Client) event.getObject();
-		System.out.println("selectedUser = " + client.getNom());
-	}
-
-	public void onUserUnselect(UnselectEvent event) {
-		client = null;
-	}
-
-	 public String sauverGerant()
-	 {
-	 gerantservice.sauverGerant(gerant);
-	 return "client";
-	 }
 }
