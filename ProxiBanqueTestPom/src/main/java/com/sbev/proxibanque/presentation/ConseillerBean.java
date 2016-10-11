@@ -222,10 +222,6 @@ public class ConseillerBean implements Serializable
     }
     
     public String sauverClient() {
-		client.setAdresse(adresse);
-		client.setNom(nom);
-		client.setPrenom(prenom);
-		client.setAdresse(adresse);
 		clientService.sauverClient(client);
 		return "clients";
 	}

@@ -91,24 +91,24 @@
 						<h:panelGrid columns="2" cellpadding="2" id="userUpdateForm"
 							border="0">
 
-							<h:outputLabel for="#{clientBean.client.nom}" value="Nom" />
+							<h:outputLabel for="#{conseillerBean.client.nom}" value="Nom" />
 							<h:inputText value="#{conseillerBean.client.nom}"
 								style="width: 100;" editable="true"></h:inputText>
 
-							<h:outputLabel for="#{clientBean.client.prenom}" value="Prenom" />
+							<h:outputLabel for="#{conseillerBean.client.prenom}" value="Prenom" />
 							<h:inputText value="#{conseillerBean.client.prenom}"
 								editable="true"></h:inputText>
 
-							<h:outputLabel for="#{clientBean.client.email}" value="Email" />
+							<h:outputLabel for="#{conseillerBean.client.email}" value="Email" />
 							<h:inputText value="#{conseillerBean.client.email}"
 								editable="true"></h:inputText>
 
-							<h:outputLabel for="#{clientBean.client.adresse}" value="Adresse" />
+							<h:outputLabel for="#{conseillerBean.client.adresse}" value="Adresse" />
 							<h:inputText value="#{conseillerBean.client.adresse}"
 								editable="true"></h:inputText>
 
 							<h:commandButton type="submit" value="Modifier"
-								action="#{clientBean.sauverClient()}"></h:commandButton>
+								action="#{conseillerBean.sauverClient()}"></h:commandButton>
 
 						</h:panelGrid>
 					</p:panel>
