@@ -20,4 +20,6 @@ public interface IConseillerDao extends JpaRepository<Conseiller, Integer>{
 	 */
 	public Conseiller findByIdEmploye (int id);
 
+	public Conseiller findConseillerByLogin (String login);
+	
 }

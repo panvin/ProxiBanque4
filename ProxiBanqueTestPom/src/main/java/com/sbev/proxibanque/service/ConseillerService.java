@@ -48,6 +48,11 @@ public class ConseillerService {
 		return conseillerDao.findByIdEmploye(id);
 	}
 	
+	
+	public Conseiller lireConseillerParLogin(String login){
+		return conseillerDao.findConseillerByLogin(login);
+	}
+	
 	/**
 	 * Permet d'obtenir la liste de tous les Conseillers
 	 * @return La liste de tous les Conseillers
@@ -62,6 +67,14 @@ public class ConseillerService {
 	 */
 	public void supprimerConseiller(Conseiller conseiller){
 		conseillerDao.delete(conseiller);
+	}
+	
+	public boolean estValide (String login, String password){
+		String expectedPass = conseillerDao.findConseillerByLogin(login).getPassword();
+			if (expectedPass != null && expectedPass.equalsIgnoreCase(password))
+				return true;
+			else
+				return false;
 	}
 
 }

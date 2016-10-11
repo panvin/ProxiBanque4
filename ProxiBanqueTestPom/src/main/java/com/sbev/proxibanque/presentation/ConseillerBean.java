@@ -43,11 +43,9 @@ public class ConseillerBean implements Serializable
     private String login;
     private String password;
 //    private String searchUser;
-    private List<Client> clientList = clientService.lireToutClient();
-    
+    private List<Client> clientList;
     private Conseiller conseiller;
     private Client client;
-
     
     
     public ConseillerBean() {
@@ -66,7 +64,6 @@ public class ConseillerBean implements Serializable
     {
         return login;
     }
-
 	public void setLogin(String username)
     {
         this.login = username;
@@ -79,7 +76,6 @@ public class ConseillerBean implements Serializable
     {
         this.password = password;
     }
-    
     public Client getClient()
     {
         if(client == null){
@@ -87,17 +83,16 @@ public class ConseillerBean implements Serializable
         }
         return client;
     }
-    
     public void setClient(Client client)
     {
         this.client = client;
     }
     
     
-    public List<Client> getListeClients()
-    {
-        return clientService.lireToutClient();
-    }
+//    public Collection<Client> getSearchUsersResults()
+//    {
+//        return searchUsersResults;
+//    }
 //    public void setSearchUsersResults(Collection<Client> searchUsersResults)
 //    {
 //        this.searchUsersResults = searchUsersResults;
@@ -114,9 +109,6 @@ public class ConseillerBean implements Serializable
     public Conseiller getConseiller() {
 		return conseiller;
 	}
-
-
-
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
@@ -126,22 +118,22 @@ public class ConseillerBean implements Serializable
 	/**
      * @return the page login.xhtml or home.xhtml if the condition is true or false
      */
-//    public String login1()
-//    {
-//    	boolean a = conseillerservice.estValide(login, password);
-//        if(a == true)
-//        {
-//        	conseiller = conseillerservice.read(login);
-//        	setClientList(clientservice.getTargetedClients(conseiller));
-//            return "clients";
-//        }
-//        else
-//        {
-//            FacesContext context = FacesContext.getCurrentInstance();
-//            context.addMessage("login", new FacesMessage("L'identifiant ou le mot de passe saisi est invalide"));
-//            return "login";
-//        }
-//    }
+    public String login1()
+    {
+    	boolean a = conseillerService.estValide(login, password);
+        if(a == true)
+        {
+        	conseiller = conseillerService.lireConseillerParLogin(login);
+        	setClientList(clientService.lireClientParConseiller(conseiller));
+            return "home";
+        }
+        else
+        {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("login", new FacesMessage("L'identifiant ou le mot de passe saisi est invalide"));
+            return "login";
+        }
+    }
     
     /**
      * @return the page home.xhtml
@@ -154,9 +146,9 @@ public class ConseillerBean implements Serializable
 //       return "home";
 //    }
     
-//    public List<Client> clientList1(){
-//    	return clientservice.lireToutClient(conseillerservice.lireConseiller(id));
-//   }
+    public List<Client> clientList1(){
+    	return clientService.lireClientParConseiller(conseillerService.lireConseillerParLogin(login));
+    }
     
     public void rowSelect(SelectEvent event){
     	client =  (Client)event.getObject();
@@ -178,18 +170,9 @@ public class ConseillerBean implements Serializable
     	client =  null;
     }
     
-	public String sauverConseiller()
-	{
-		conseillerService.sauverConseiller(conseiller);
-		return "clients";
-	}
-	public String lireToutClient(Client client) {		
-		clientService.lireToutClient();		
-		return "clients";
-	}
-	
-	 public List<Client> clientList1(){
-	    	return clientService.lireToutClient();
-	    }
-
+//	public String createUser()
+//	{
+//		clientservice.create(nom, prenom, adresse, email, soldeCourant, soldeEpargne, conseillerservice.read(login));
+//		return "home";
+//	}
 }
