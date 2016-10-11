@@ -60,29 +60,43 @@
 							<h:outputText value="#{user.email}" />
 						</p:column>
 
-						<!-- <p:column sortBy="#{user.iDCourant}">
-                    <f:facet name="header">
-                        <h:outputText value="Numéro de compte courant" />
-                    </f:facet>
-                    <h:outputText value="#{user.iDCourant}" />
-                </p:column>
-                
-                <p:column sortBy="#{user.iDEpargne}">
-                    <f:facet name="header">
-                        <h:outputText value="Numéro de compte epargne" />
-                    </f:facet>
-                    <h:outputText value="#{user.iDEpargne}" />
-                </p:column>
-                
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Supprimer le client" />
-                    </f:facet>
+						<p:column sortBy="#{user.courant.idCompte}">
+							<f:facet name="header">
+								<h:outputText value="Numéro de compte courant" />
+							</f:facet>
+							<h:outputText value="#{user.courant.idCompte}" />
+						</p:column>
+						
+						<p:column sortBy="#{user.courant.solde}">
+							<f:facet name="header">
+								<h:outputText value="Solde compte courant" />
+							</f:facet>
+							<h:outputText value="#{user.courant.solde}" />
+						</p:column>
 
-                    <h:commandLink type="delete" value="Supprimer le client"
-                        action="#{clientBean.deleteUser(user)}">
-                        </h:commandLink>
-                </p:column> -->
+						<p:column sortBy="#{user.epargne.idCompte}">
+							<f:facet name="header">
+								<h:outputText value="Numéro de compte epargne" />
+							</f:facet>
+							<h:outputText value="#{user.epargne.idCompte}" />
+						</p:column>
+						
+						<p:column sortBy="#{user.epargne.solde}">
+							<f:facet name="header">
+								<h:outputText value="Solde compte epargne" />
+							</f:facet>
+							<h:outputText value="#{user.epargne.solde}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Supprimer le client" />
+							</f:facet>
+
+							<h:commandLink type="delete" value="Supprimer le client"
+								action="#{clientBean.deleteUser(user)}">
+							</h:commandLink>
+						</p:column>
 
 					</p:dataTable>
 
@@ -95,7 +109,8 @@
 							<h:inputText value="#{conseillerBean.client.nom}"
 								style="width: 100;" editable="true"></h:inputText>
 
-							<h:outputLabel for="#{conseillerBean.client.prenom}" value="Prenom" />
+							<h:outputLabel for="#{conseillerBean.client.prenom}"
+								value="Prenom" />
 							<h:inputText value="#{conseillerBean.client.prenom}"
 								editable="true"></h:inputText>
 
@@ -103,7 +118,8 @@
 							<h:inputText value="#{conseillerBean.client.email}"
 								editable="true"></h:inputText>
 
-							<h:outputLabel for="#{conseillerBean.client.adresse}" value="Adresse" />
+							<h:outputLabel for="#{conseillerBean.client.adresse}"
+								value="Adresse" />
 							<h:inputText value="#{conseillerBean.client.adresse}"
 								editable="true"></h:inputText>
 
