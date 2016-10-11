@@ -16,23 +16,50 @@
 		<!-- redéfinition de la zone content du layout -->
 		<ui:define name="content">
 			<center>
-				<p:panel id="transactions" header="Historique des transactions"
-					style="width: 700;">
-					<h:form>
-						<p:growl id="growl" showDetail="true" />
+				<h:form id="formDataTable">
+					<p:panel header="Liste des transactions" style="width: 700;" />
 
-						<h:panelGrid columns="2" columnClasses="left,right"
-							style="width:100%">
+					<p:dataTable var="virement" value="#{gerantBean.virementList}">
+						
 
-							<p:chart type="bar" model="#{chartView.barModel}"
-								style="width:400px;height:300px">
-								<p:ajax event="itemSelect" listener="#{chartView.itemSelect}"
-									update="growl" />
-							</p:chart>
-						</h:panelGrid>
 
-					</h:form>
-				</p:panel>
+						<p:column sortBy="#{virement.idVirement}">
+							<f:facet name="header">
+								<h:outputText value="Id" />
+							</f:facet>
+							<h:outputText value="#{virement.idVirement}" />
+						</p:column>
+
+						<p:column sortBy="#{virement.date}">
+							<f:facet name="header">
+								<h:outputText value="Date" />
+							</f:facet>
+							<h:outputText value="#{virement.date}" />
+						</p:column>
+						<p:column sortBy="#{virement.idCompteDebiteur}">
+							<f:facet name="header">
+								<h:outputText value="Compte debiteur" />
+							</f:facet>
+							<h:outputText value="#{virement.idCompteDebiteur}" />
+						</p:column>
+						<p:column sortBy="#{virement.idCompteCrediteur}">
+							<f:facet name="header">
+								<h:outputText value="Compte crediteur" />
+							</f:facet>
+							<h:outputText value="#{virement.idCompteCrediteur}" />
+						</p:column>
+						<p:column sortBy="#{virement.montant}">
+							<f:facet name="header">
+								<h:outputText value="Montant" />
+							</f:facet>
+							<h:outputText value="#{virement.montant}" />
+						</p:column>
+
+						
+					</p:dataTable>
+
+
+				</h:form>
 			</center>
 		</ui:define>
 	</ui:composition>

@@ -18,7 +18,9 @@ import org.springframework.stereotype.Controller;
 import com.sbev.proxibanque.domaine.Client;
 import com.sbev.proxibanque.domaine.Conseiller;
 import com.sbev.proxibanque.domaine.Gerant;
+import com.sbev.proxibanque.domaine.Virement;
 import com.sbev.proxibanque.service.ClientService;
+import com.sbev.proxibanque.service.CompteService;
 import com.sbev.proxibanque.service.ConseillerService;
 import com.sbev.proxibanque.service.GerantService;
 
@@ -38,6 +40,8 @@ public class GerantBean implements Serializable {
 	private ConseillerService conseillerService;
 	@Autowired
 	private GerantService gerantService; 
+	@Autowired
+	private CompteService compteService;
 
     /**
      * 
@@ -47,6 +51,7 @@ public class GerantBean implements Serializable {
 //    private String searchUser;
     private List<Client> clientList;
     private List<Conseiller> conseillerList;
+    private List<Virement> virementList;
     private Gerant gerant;
     private Conseiller conseiller; 
     private Client client;
@@ -62,7 +67,31 @@ public class GerantBean implements Serializable {
     
     
     
-    public GerantService getGerantService() {
+    public CompteService getCompteService() {
+		return compteService;
+	}
+
+
+
+	public void setCompteService(CompteService compteService) {
+		this.compteService = compteService;
+	}
+
+
+
+	public List<Virement> getVirementList() {
+		return virementList;
+	}
+
+
+
+	public void setVirementList(List<Virement> virementList) {
+		this.virementList = virementList;
+	}
+
+
+
+	public GerantService getGerantService() {
 		return gerantService;
 	}
 
@@ -250,8 +279,10 @@ public class GerantBean implements Serializable {
         if(a == true)
         {
         	gerant = gerantService.lireGerantParLogin(login);
+        	setConseillerList(conseillerService.lireToutConseiller());
         	setClientList(clientService.lireClientParConseiller(conseiller));
-            return "conseiller/clients";
+        	setVirementList(compteService.lireToutVirement());
+            return "gerant/conseillers";
         }
         else
         {

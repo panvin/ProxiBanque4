@@ -97,4 +97,7 @@ public class CompteService {
 		virementDao.saveAndFlush(virement);
 	}
 
+	public List<Virement> lireToutVirement(){
+		return virementDao.findAll();
+	}
 }

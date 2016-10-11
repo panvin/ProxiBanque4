@@ -197,9 +197,9 @@ public class ConseillerBean implements Serializable
 //       return "home";
 //    }
     
-    public List<Client> clientList1(){
-    	return clientService.lireClientParConseiller(conseillerService.lireConseillerParLogin(login));
-    }
+//    public List<Client> clientList1(){
+//    	return clientService.lireClientParConseiller(conseillerService.lireConseillerParLogin(login));
+//    }
     
     public void rowSelect(SelectEvent event){
     	client =  (Client)event.getObject();
