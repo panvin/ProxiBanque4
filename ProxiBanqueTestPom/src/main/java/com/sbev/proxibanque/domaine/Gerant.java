@@ -19,6 +19,16 @@ import javax.persistence.InheritanceType;
 @DiscriminatorColumn(name="ROLE")
 @DiscriminatorValue("GERANT")
 public class Gerant extends Conseiller {
+	
+//	private List<Conseiller> conseillerList; 
+//
+//	public List<Conseiller> getConseillerList() {
+//		return conseillerList;
+//	}
+//
+//	public void setConseillerList(List<Conseiller> conseillerList) {
+//		this.conseillerList = conseillerList;
+//	}
 
 	/**
 	 *  Constructeur par défaut
