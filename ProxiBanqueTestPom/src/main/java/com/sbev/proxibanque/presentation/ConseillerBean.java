@@ -196,4 +196,10 @@ public class ConseillerBean implements Serializable
     	clientService.supprimerClient(client);
     	return "clients";
     }
+    
+    
+    public String logout() {
+    	FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/login.xhtml?faces-redirect=true";
+    }
 }
