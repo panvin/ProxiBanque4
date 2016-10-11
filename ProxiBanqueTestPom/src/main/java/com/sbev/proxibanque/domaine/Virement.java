@@ -1,6 +1,7 @@
 package com.sbev.proxibanque.domaine;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class Virement {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idVirement;
 	//changer UML
-	private Timestamp date;
+	private Date date;
 	//id ou compte ?
 	private int idCompteDebiteur;
 	private int idCompteCrediteur;
@@ -33,7 +34,7 @@ public class Virement {
 	 * @param idCompteCrediteur vIdentifiant du compte a crediter (int)
 	 * @param montant Le Montant du virement (double)
 	 */
-	public Virement(int idVirement, Timestamp date, int idCompteDebiteur, int idCompteCrediteur, double montant) {
+	public Virement(int idVirement, Date date, int idCompteDebiteur, int idCompteCrediteur, double montant) {
 		super();
 		this.idVirement = idVirement;
 		this.date = date;
@@ -49,7 +50,7 @@ public class Virement {
 	 * @param idCompteCrediteur vIdentifiant du compte a crediter (int)
 	 * @param montant Le Montant du virement (double)
 	 */
-	public Virement(Timestamp date, int idCompteDebiteur, int idCompteCrediteur, double montant) {
+	public Virement(Date date, int idCompteDebiteur, int idCompteCrediteur, double montant) {
 		super();
 		this.date = date;
 		this.idCompteDebiteur = idCompteDebiteur;
@@ -87,11 +88,11 @@ public class Virement {
 		this.idVirement = idVirement;
 	}
 	
-	public Timestamp getDate() {
+	public Date getDate() {
 		return date;
 	}
 	
-	public void setDate(Timestamp date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	

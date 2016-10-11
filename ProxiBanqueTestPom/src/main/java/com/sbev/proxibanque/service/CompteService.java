@@ -1,5 +1,7 @@
 package com.sbev.proxibanque.service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,7 +93,7 @@ public class CompteService {
 		this.sauverCompte(compteD);
 		this.sauverCompte(compteC);
 		
-		Virement virement = new Virement(idCompteD, idCompteC, montant);
+		Virement virement = new Virement( new Date(),idCompteD, idCompteC, montant);
 		virementDao.saveAndFlush(virement);
 	}
 
