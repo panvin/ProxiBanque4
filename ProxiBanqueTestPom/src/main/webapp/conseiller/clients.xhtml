@@ -12,57 +12,55 @@
 
 <h:body>
 
-    <center>
-        <h:form id="formDataTable">
-            <p:panel header="Liste de vos clients" style="width: 700;"/>
+	<!-- Declaration du template dont la page est cliente -->
+	<ui:composition template="/template/layout.xhtml">
+		<!-- redéfinition de la zone content du layout -->
+		<ui:define name="content">
+			<center>
+				<h:form id="formDataTable">
+					<p:panel header="Liste de vos clients" style="width: 700;" />
 
-            <p:panel>
-            <p:commandButton value="Gestion clients" action="home"/>
-            <p:commandButton value="Virements" action="virement"/>
-            </p:panel>
-
-    
-            <p:dataTable var="user" value="#{conseillerBean.clientList}"
-                selection="#{conseillerBean.client}" selectionMode="single"
-                style="width: 700" rowKey="#{user.idClient}"
-                first="#{user.idClient}" editable="true">
-                <p:ajax event="rowSelect" update=":formDataTable:userUpdateForm"
-                    listener="#{conseillerBean.onUserSelect}" />
+					<p:dataTable var="user" value="#{conseillerBean.clientList}"
+						selection="#{conseillerBean.client}" selectionMode="single"
+						style="width: 700" rowKey="#{user.idClient}"
+						first="#{user.idClient}" editable="true">
+						<p:ajax event="rowSelect" update=":formDataTable:userUpdateForm"
+							listener="#{conseillerBean.onUserSelect}" />
 
 
-                <p:column sortBy="#{user.idClient}">
-                    <f:facet name="header">
-                        <h:outputText value="Id" />
-                    </f:facet>
-                    <h:outputText value="#{user.idClient}" />
-                </p:column>
-                
-                <p:column sortBy="#{user.nom}">
-                    <f:facet name="header">
-                        <h:outputText value="Nom" />
-                    </f:facet>
-                    <h:outputText value="#{user.nom}" />
-                </p:column>
-                <p:column sortBy="#{user.prenom}">
-                    <f:facet name="header">
-                        <h:outputText value="Prenom" />
-                    </f:facet>
-                    <h:outputText value="#{user.prenom}" />
-                </p:column>
-                <p:column sortBy="#{user.adresse}">
-                    <f:facet name="header">
-                        <h:outputText value="Adresse" />
-                    </f:facet>
-                    <h:outputText value="#{user.adresse}" />
-                </p:column>
-                <p:column sortBy="#{user.email}">
-                    <f:facet name="header">
-                        <h:outputText value="Email" />
-                    </f:facet>
-                    <h:outputText value="#{user.email}" />
-                </p:column>
-                
-                <!-- <p:column sortBy="#{user.iDCourant}">
+						<p:column sortBy="#{user.idClient}">
+							<f:facet name="header">
+								<h:outputText value="Id" />
+							</f:facet>
+							<h:outputText value="#{user.idClient}" />
+						</p:column>
+
+						<p:column sortBy="#{user.nom}">
+							<f:facet name="header">
+								<h:outputText value="Nom" />
+							</f:facet>
+							<h:outputText value="#{user.nom}" />
+						</p:column>
+						<p:column sortBy="#{user.prenom}">
+							<f:facet name="header">
+								<h:outputText value="Prenom" />
+							</f:facet>
+							<h:outputText value="#{user.prenom}" />
+						</p:column>
+						<p:column sortBy="#{user.adresse}">
+							<f:facet name="header">
+								<h:outputText value="Adresse" />
+							</f:facet>
+							<h:outputText value="#{user.adresse}" />
+						</p:column>
+						<p:column sortBy="#{user.email}">
+							<f:facet name="header">
+								<h:outputText value="Email" />
+							</f:facet>
+							<h:outputText value="#{user.email}" />
+						</p:column>
+
+						<!-- <p:column sortBy="#{user.iDCourant}">
                     <f:facet name="header">
                         <h:outputText value="Numéro de compte courant" />
                     </f:facet>
@@ -85,36 +83,40 @@
                         action="#{clientBean.deleteUser(user)}">
                         </h:commandLink>
                 </p:column> -->
-                
-            </p:dataTable>
 
-            <p:panel id="userDetailsPanelId" header="Modifier un client"
-                style="width: 700;" widgetVar="oneUser">
-                <h:panelGrid columns="2" cellpadding="2" id="userUpdateForm"
-                    border="0">
-                    
-                    <h:outputLabel for="#{clientBean.client.nom}" value="Nom" />
-                    <h:inputText value="#{conseillerBean.client.nom}"
-                        style="width: 100;" editable="true"></h:inputText>
+					</p:dataTable>
 
-                    <h:outputLabel for="#{clientBean.client.prenom}" value="Prenom" />
-                    <h:inputText value="#{conseillerBean.client.prenom}"
-                        editable="true"></h:inputText>
+					<p:panel id="userDetailsPanelId" header="Modifier un client"
+						style="width: 700;" widgetVar="oneUser">
+						<h:panelGrid columns="2" cellpadding="2" id="userUpdateForm"
+							border="0">
 
-                    <h:outputLabel for="#{clientBean.client.email}" value="Email" />
-                    <h:inputText value="#{conseillerBean.client.email}" editable="true"></h:inputText>
+							<h:outputLabel for="#{clientBean.client.nom}" value="Nom" />
+							<h:inputText value="#{conseillerBean.client.nom}"
+								style="width: 100;" editable="true"></h:inputText>
 
-                    <h:outputLabel for="#{clientBean.client.adresse}" value="Adresse" />
-                    <h:inputText value="#{conseillerBean.client.adresse}" editable="true"></h:inputText>
-                    
-                    <h:commandButton type="submit" value="Modifier" action="#{clientBean.updateUser()}"></h:commandButton>
+							<h:outputLabel for="#{clientBean.client.prenom}" value="Prenom" />
+							<h:inputText value="#{conseillerBean.client.prenom}"
+								editable="true"></h:inputText>
 
-                </h:panelGrid>
-            </p:panel>
-            
- 
-        </h:form>
-    </center>
+							<h:outputLabel for="#{clientBean.client.email}" value="Email" />
+							<h:inputText value="#{conseillerBean.client.email}"
+								editable="true"></h:inputText>
 
+							<h:outputLabel for="#{clientBean.client.adresse}" value="Adresse" />
+							<h:inputText value="#{conseillerBean.client.adresse}"
+								editable="true"></h:inputText>
+
+							<h:commandButton type="submit" value="Modifier"
+								action="#{clientBean.sauverClient()}"></h:commandButton>
+
+						</h:panelGrid>
+					</p:panel>
+
+
+				</h:form>
+			</center>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>
