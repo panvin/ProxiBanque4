@@ -96,6 +96,6 @@ public class CompteBean implements Serializable{
 
 	public String faireVirement() {
 		compteService.virement(idcomptedeb, idcomptecred, montant);
-		return "conseiller/clients";
+		return "clients";
 	}
 }
