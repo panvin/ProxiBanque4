@@ -70,8 +70,13 @@ public class ConseillerService {
 	}
 	
 	public boolean estValide (String login, String password){
-		String expectedPass = conseillerDao.findConseillerByLogin(login).getPassword();
-			if (expectedPass != null && expectedPass.equalsIgnoreCase(password))
+		String expectedPass;
+		try{
+		expectedPass = conseillerDao.findConseillerByLogin(login).getPassword();
+		}catch(NullPointerException e){
+			expectedPass = null;
+		}
+		if (expectedPass != null && expectedPass.equalsIgnoreCase(password))
 				return true;
 			else
 				return false;

@@ -89,8 +89,13 @@ public class GerantService {
 	}
 	
 	public boolean estValide (String login, String password){
-		String expectedPass = gerantDao.findGerantByLogin(login).getPassword();
-			if (expectedPass != null && expectedPass.equalsIgnoreCase(password))
+		String expectedPass;
+		try{
+			expectedPass = gerantDao.findGerantByLogin(login).getPassword();
+		} catch (NullPointerException e){
+			expectedPass = null;
+		}
+		if (expectedPass != null && expectedPass.equalsIgnoreCase(password))
 				return true;
 			else
 				return false;
